@@ -12,6 +12,10 @@ angular.module('tscorerApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/Setup', {
+        templateUrl: 'views/setup.html',
+        controller: 'SetupCtrl as setup'
+      })
       .otherwise({
         redirectTo: '/'
       });

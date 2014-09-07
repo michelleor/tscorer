@@ -1,0 +1,92 @@
+<ng-form name="setupForm" class="form-horizontal">
+  <div class="form-group">
+    <label for="selectGameType" class="col-xs-3 control-label zero-right-padding">Game Type</label>
+    <div class="col-xs-9">
+      <select class="form-control"  name="selectGameType" id="selectGameType"
+        ng-model="setup.gameType" ng-options="o as o for o in setup.gamesettings.gameTypes">
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="gamesPerSet" class="col-xs-3 control-label zero-right-padding">Game / Set</label>
+    <div class="col-xs-3">
+      <select class="form-control" name="gamesPerSet" id="gamesPerSet"
+        ng-model="setup.gamesPerSet"  ng-options="o as o for o in setup.gamesettings.gamesPerSet">
+      </select>
+    </div>
+    <label for="setsPerMatch" class="col-xs-3 control-label">Sets</label>
+    <div class="col-xs-3">
+      <select class="form-control" name="setsPerMatch" id="setsPerMatch">
+        <option>1</option>
+        <option>3</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label zero-right-padding">Handicap</label>
+    <div class="col-xs-9">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success disabled">On</button>
+        <button type="button" class="btn btn-default disabled">Off</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" ng-show="setup.handicap">
+    <label class="col-xs-3 control-label zero-right-padding">Calculate</label>
+    <div class="col-xs-9">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success disabled">On</button>
+        <button type="button" class="btn btn-default disabled">Off</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" ng-hide="setup.handicap">
+    <label class="col-xs-3 control-label zero-right-padding">Advantage</label>
+    <div class="col-xs-9">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default">On</button>
+        <button type="button" class="btn btn-success">Off</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-8 control-label zero-right-padding">Players</label>
+    <label class="col-xs-2 control-label zero-right-padding">Hcp</label>
+    <label class="col-xs-2 control-label zero-right-padding">Serve</label>
+    <div class="col-xs-8">
+      <input class="form-control" ng-model="setup.player1" required/>
+    </div>
+    <div class="col-xs-2 no-padding">
+      <input class="form-control" ng-model="setup.player1hc" 
+        ng-change="setup.hcpChanged()" type="number" required/>
+    </div>
+     <div class="col-xs-2">
+      <input type="radio" name="server" class="form-control" checked="checked"/>
+    </div>   
+    <div class="col-xs-8">
+      <input class="form-control" ng-model="setup.player2" required/>
+    </div>
+    <div class="col-xs-2 no-padding">
+      <input class="form-control" ng-model="setup.player2hc" 
+        ng-change="setup.hcpChanged()" type="number" required/>
+    </div>  
+    <div class="col-xs-2">
+      <input type="radio" name="server" class="form-control" />
+    </div>   
+  </div>
+  <div >
+    <button class="btn btn-success center-block" ng-click="setup.calculate()"
+    ng-disabled="!setupForm.$valid" ng-hide="setup.showHcp">Calculate</button>
+  </div>
+</ng-form>
+<div class="row" ng-show="setup.showHcp">
+  <div class="col-xs-12">
+  {{setup.player1}}
+  </div>
+  <div class="col-xs-12">
+  {{setup.player2}}
+  </div>
+  <div>
+    <a class="btn btn-success col-xs-4 col-xs-offset-4" ng-href="#/Game" ng-disabled="!setupForm.$valid">Start Game</a>
+  </div>
+</div>
