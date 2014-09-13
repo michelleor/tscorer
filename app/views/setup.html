@@ -3,7 +3,7 @@
     <label for="selectGameType" class="col-xs-3 control-label zero-right-padding">Game Type</label>
     <div class="col-xs-9">
       <select class="form-control"  name="selectGameType" id="selectGameType"
-        ng-model="setup.gameType" ng-options="o as o for o in setup.gamesettings.gameTypes">
+        ng-model="setup.gameType" ng-options="o as o for o in setup.gameTypes">
       </select>
     </div>
   </div>
@@ -11,14 +11,13 @@
     <label for="gamesPerSet" class="col-xs-3 control-label zero-right-padding">Game / Set</label>
     <div class="col-xs-3">
       <select class="form-control" name="gamesPerSet" id="gamesPerSet"
-        ng-model="setup.gamesPerSet"  ng-options="o as o for o in setup.gamesettings.gamesPerSet">
+        ng-model="setup.gamesPerSet"  ng-options="o as o for o in setup.games">
       </select>
     </div>
     <label for="setsPerMatch" class="col-xs-3 control-label">Sets</label>
     <div class="col-xs-3">
-      <select class="form-control" name="setsPerMatch" id="setsPerMatch">
-        <option>1</option>
-        <option>3</option>
+      <select class="form-control" name="setsPerMatch" id="setsPerMatch" 
+        ng-model="setup.sets" ng-options="o as o for o in setup.setsPerMatch">
       </select>
     </div>
   </div>
@@ -54,24 +53,26 @@
     <label class="col-xs-2 control-label zero-right-padding">Hcp</label>
     <label class="col-xs-2 control-label zero-right-padding">Serve</label>
     <div class="col-xs-8">
-      <input class="form-control" ng-model="setup.player1" required/>
+      <input class="form-control" ng-model="setup.p1.name" required/>
     </div>
     <div class="col-xs-2 no-padding">
-      <input class="form-control" ng-model="setup.player1hc" 
+      <input class="form-control" ng-model="setup.p1.hc" 
         ng-change="setup.hcpChanged()" type="number" required/>
     </div>
      <div class="col-xs-2">
-      <input type="radio" name="server" class="form-control" checked="checked"/>
+      <input type="radio" name="server" class="form-control"
+        ng-model = "setup.serving" value="p1" ng-change="setup.setServer()"/>
     </div>   
     <div class="col-xs-8">
-      <input class="form-control" ng-model="setup.player2" required/>
+      <input class="form-control" ng-model="setup.p2.name" required/>
     </div>
     <div class="col-xs-2 no-padding">
-      <input class="form-control" ng-model="setup.player2hc" 
+      <input class="form-control" ng-model="setup.p2.hc" 
         ng-change="setup.hcpChanged()" type="number" required/>
     </div>  
     <div class="col-xs-2">
-      <input type="radio" name="server" class="form-control" />
+      <input type="radio" name="server" class="form-control"
+        ng-model="setup.serving" value="p2" ng-change="setup.setServer()"/>
     </div>   
   </div>
   <div >
@@ -81,12 +82,17 @@
 </ng-form>
 <div class="row" ng-show="setup.showHcp">
   <div class="col-xs-12">
-  {{setup.player1}}
+    {{setup.p1.name}}: {{setup.p1.hcSettings.description}}
   </div>
   <div class="col-xs-12">
-  {{setup.player2}}
+    {{setup.p2.name}}: {{setup.p2.hcSettings.description}}
   </div>
   <div>
     <a class="btn btn-success col-xs-4 col-xs-offset-4" ng-href="#/Game" ng-disabled="!setupForm.$valid">Start Game</a>
+  </div>
+</div>
+<div class="col-xs-12" ng-show="setup.lookupError">
+  <div class="alert alert-warning" role="alert" >
+    {{setup.lookupError}}
   </div>
 </div>

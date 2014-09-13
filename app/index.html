@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div class="container" ng-view=""></div>
+    <div class="container" ng-class="{slide: path !== '/' }" ng-view=""></div>
 
     <div class="footer">
       <div class="container">
@@ -99,9 +99,11 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/setup.js"></script>
         <script src="scripts/services/gamesettings.js"></script>
+        <script src="scripts/services/handicaps.js"></script>
+        <script src="scripts/controllers/game.js"></script>
+        <script src="scripts/services/appsettings.js"></script>
         <!-- endbuild -->
 </body>
 </html>

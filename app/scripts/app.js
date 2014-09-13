@@ -4,13 +4,13 @@ angular.module('tscorerApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngAnimate'
 ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/main.html'
       })
       .when('/Setup', {
         templateUrl: 'views/setup.html',
@@ -19,4 +19,9 @@ angular.module('tscorerApp', [
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function ($rootScope, $location) {
+  $rootScope.$on("$locationChangeStart", function () {
+    $rootScope.path = $location.path();
   });
+});

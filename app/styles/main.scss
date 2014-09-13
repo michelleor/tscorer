@@ -52,3 +52,34 @@ body {
 .no-padding {
   padding: 0;
 }
+
+/*Animations*/
+.slide{
+  right:0;
+
+  &.ng-enter, &.ng-leave {
+    transition: 0.3s linear all;  
+    position:fixed;  
+  }
+
+  &.ng-enter{
+    z-index:inherit;
+    right:-100%;
+  }
+  &.ng-enter-active{
+    right:0;
+    position:relative;
+  }
+
+  &.ng-leave{
+    z-index:-100;
+    right:0;
+    left:0;
+  }
+  &.ng-leave-active{
+    position:fixed;
+    right:100%;
+    left:-100%;
+  }
+}
+
