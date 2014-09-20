@@ -1,0 +1,55 @@
+.game {
+
+  div[class^="col"] {
+    padding: 0;
+  }
+
+  &.view-container {
+    background-color: #f2f2f2;
+  }
+
+  .card {
+    margin-bottom: 12px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin-top: 0;
+  }
+}
+
+.serveplaceholder {
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  padding: 2px;
+  display: inline-block;
+
+  &.serve {
+    background-color: $brand-primary;
+  }
+
+  &.fault {
+    background-color: $brand-secondary;
+  }
+};
+
+.scoring {
+  padding: 3px;
+  .col-xs-2 {
+    text-align: center;
+  }
+}
+.scoreHeadings {
+  padding: 5px 10px;
+  margin: 0px;
+}
+.playerscore {
+  color: #222;
+  padding: 5px 10px;
+  margin: 0px;
+}
+
+#logcard {
+    max-height: 145px;
+    overflow-y: scroll;
+}

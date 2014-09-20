@@ -1,0 +1,108 @@
+/*  Chases */
+
+.line {
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+
+
+  &.half {
+    height: 15px;
+    .title {
+      background-color: #AF857B;
+      display: inline-block;
+      width: 220px;
+    }
+  }
+}
+.space {
+  background-color: rgb(121, 60, 45);
+  color: white;
+  height: 25px;
+  text-align: center;
+  line-height: 36px;
+  &.full {
+    height: 45px;
+    .title {
+      line-height: 40px;
+    }
+  }
+
+  .title {
+    line-height: 23px;
+  }
+}
+
+
+.chasecontainer {
+  width: 315px;
+  background-color: white;
+  margin-top: 30px;
+}
+
+.courtmap {
+  border: 3px solid #222E10;
+  position: relative;
+}
+
+.end-label{
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.chasepicker {
+  height: 485px;
+  overflow-y: scroll;
+
+}
+
+.line.blue {
+  background-color: #68D;
+  .title {
+    background-color: #68D;
+  }
+}
+
+.line.net {
+  background-color: #661F1C;
+  color: white;
+}
+
+.gallery {
+  position: absolute;
+  left: 0;
+  width: 30px;
+  z-index: 10;
+  height: 137px;
+  top: 170px;
+  background-color: #222E10;
+
+  &.door {
+    height: 80px;
+  }
+}
+.gallery2 {
+  top: 312px;
+}
+.gallery3 {
+  top: 396px;
+}
+
+.gallery4 {
+  top: 536px;
+}
+
+.gallery5 {
+  top: 677px;;
+}
+
+.gallery7 {
+  top: 760px;
+  height: 163px;
+}
+
+.gallery8 {
+  top: 927px;
+  height: 163px;
+}

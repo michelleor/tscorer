@@ -1,1 +1,54 @@
-<p>This is the game view.</p>
+<div class="game view-container">
+  <div class="card scoring">
+    <div class="row scoreHeadings">
+      <div class="col-xs-6"><h3>Players</h3></div>
+      <div class="col-xs-2"><h3>S</h3></div>
+      <div class="col-xs-2"><h3>G</h3></div>
+      <div class="col-xs-2"><h3>P</h3></div>   
+    </div>
+    <div class="playerscore row" >
+      <div class="col-xs-6">
+        <div ng-class="{serveplaceholder: true, serve:gamedata.p1.serving, fault:gamedata.p1.faults==1}"></div>
+        {{gamedata.p1.name}}
+      </div>
+      <div class="col-xs-2">{{gamedata.p1.sets}}</div>
+      <div class="col-xs-2">{{gamedata.p1.games}}</div>
+      <div class="col-xs-2">{{gamedata.p1.pointslabel}}</div>
+    </div>
+    <div class="playerscore row" >
+      <div class="col-xs-6">
+        <div ng-class="{serveplaceholder: true, serve:gamedata.p2.serving, fault:gamedata.p2.faults==1}"></div>  
+        {{gamedata.p2.name}}
+      </div>
+      <div class="col-xs-2">{{gamedata.p2.sets}}</div>
+      <div class="col-xs-2">{{gamedata.p2.games}}</div>
+      <div class="col-xs-2">{{gamedata.p2.pointslabel}}</div>
+    </div>
+  <div class="actions">
+    <a href="" class="action primary" ng-click="awardPoint('p1')">SERVER</a>
+    <a href="" class="action primary" ng-click="awardPoint('p2')">RECEIVER</a>
+    <a href="" class="action primary" ng-click="recoredFault()">FAULT</a>
+    <a href="" class="action primary" ng-click="showChases()">CHASE</a>
+  </div>
+  </div>
+
+  <div class="card">
+    <h3>Chases</h3>
+    <div id="chasecard" >
+      <div ng-show="gamedata.chases.length>0">
+        <div class="chase" ng-repeat="chase in gamedata.chases" >
+          <span ng-show="chase.hazard">Hazard chase </span>{{chase.name}}
+        </div>
+      </div>
+      <div ng-hide="gamedata.chases.length>0">No Chases</div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>History</h3>
+    <div id="logcard">
+      <div class="logentry" ng-repeat="log in gamedata.logs">
+        {{log.text}}
+      </div>
+    </div>
+  </div>
+</div>

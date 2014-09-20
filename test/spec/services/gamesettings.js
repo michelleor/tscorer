@@ -15,7 +15,9 @@ describe('Service: GameSettings', function () {
     expect(GameSettings).toEqual({
       p1: {},
       p2: {},
-      gameType: ""
+      gameType: "",
+      gamesPerSet: 0,
+      setsPerMatch: 0
     });
   });
 

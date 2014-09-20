@@ -1,11 +1,13 @@
 'use strict';
-
 angular.module('tscorerApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngAnimate'
+  'ngAnimate',
+  'mgcrea.ngStrap',
+  'tscorerAppMocks' //allow game page to be loaded with dummy data.  TODO - remove once page is complete
+
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -14,7 +16,11 @@ angular.module('tscorerApp', [
       })
       .when('/Setup', {
         templateUrl: 'views/setup.html',
-        controller: 'SetupCtrl as setup'
+        controller: 'SetupCtrl'
+      })
+      .when('/Game', {
+        templateUrl: 'views/game.html',
+        controller: 'GameCtrl'
       })
       .otherwise({
         redirectTo: '/'

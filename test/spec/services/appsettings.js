@@ -30,19 +30,15 @@ describe('Service: AppSettings', function () {
     expect(AppSettings.sets).toContain(3);
   });
 
-  it( 'should define scores as an object with 9 properties', function(){
-    //expect(Object.keys(AppSettings.scores).length).toBe(9);
-    expect(AppSettings.scores).toEqual(jasmine.objectContaining({
-      "l": "Love"
-    }));
-    expect(Object.keys(AppSettings.scores).length).toBe(9);
+  it( 'should define scores as an object', function(){
+    expect(AppSettings.scores).toEqual(jasmine.any(Object));
   });
 
   it( 'should define chases as an object', function(){
-    expect(typeof AppSettings.chases).toBe('object');
+    expect(AppSettings.chases).toEqual(jasmine.any(Object));
   });
 
-  it( 'should be an object with 5 properties' , function(){
-    expect(Object.keys(AppSettings).length).toBe(5);
+  it( 'should be an object with 7 properties' , function(){
+    expect(Object.keys(AppSettings).length).toBe(7);
   });
 });

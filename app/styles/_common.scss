@@ -1,0 +1,155 @@
+
+/* header */
+.navbar-default  {
+  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  border: none;
+  .container {
+    background-color: #8bc34a;
+  }
+  .navbar-brand {
+    color: white;
+    font-weight:200;
+    font-size: 22px;
+    &:hover {
+      color: white;
+    }
+  }
+
+}
+
+
+/* Space out content a bit */
+body {
+  padding-top: 0;
+}
+
+.content {
+  margin-top: 50px;
+
+  &.container {
+    padding: 0;
+  }
+}
+
+.view-container {
+  min-height: 515px;
+  padding: 15px;
+}
+
+/* Android material styling */
+.card {
+  background-color: white;
+  padding: 15px;
+  @include boxshadow(1);
+  border-radius: $border-radius-base;
+  font-weight: $font-weight-light;  
+    font-size: larger;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 200;
+}
+
+.relative-container {
+  position: relative;
+}
+
+.right {
+  display: inline-block;
+  position: absolute;
+  right: 15px;
+}
+
+.bottom {
+  display: inline-block;
+  position: absolute;
+  bottom: 15px;
+}
+.btn {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+h1, h2, h3, h4, h5 {
+  color: $brand-primary;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.actions {
+  padding-top: 15px;
+}
+
+.action {
+  margin: 0 9px;
+  font-weight: 700;
+}
+
+/*Animations*/
+.slide{
+  right:0;
+
+  &.ng-enter, &.ng-leave {
+    transition: 0.3s linear all;  
+    position:fixed;  
+  }
+
+  &.ng-enter{
+    z-index:inherit;
+    right:-100%;
+  }
+  &.ng-enter-active{
+    right:0;
+    position:relative;
+  }
+
+  &.ng-leave{
+    z-index:-100;
+    right:0;
+    left:0;
+  }
+  &.ng-leave-active{
+    position:fixed;
+    right:100%;
+    left:-100%;
+  }
+}
+
+/* Angular-strap animation for modal*/
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+/* aside */
+.aside {
+  display: block;
+  padding-top: 20px;
+  width: 345px;
+}
+
+.aside-backdrop {
+  z-index: 5;
+}
+
+.aside {
+  z-index: 10;
+}
+
+.aside .aside-dialog .aside-body {
+  padding: 0 15px;
+}
+

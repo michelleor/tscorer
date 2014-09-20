@@ -8,44 +8,50 @@
  * Controller of the tscorerApp
  */
 angular.module('tscorerApp')
-    .controller('SetupCtrl', ['Handicaps', 'AppSettings', 'GameSettings',
-      function ( Handicaps, AppSettings, GameSettings) {
-        this.gameTypes = AppSettings.gameTypes;
-        this.games = AppSettings.games;
-        this.setsPerMatch = AppSettings.sets;
-        this.p1 = {};
-        this.p1.serving = true;
-        this.p2 = {};
-        this.gameType = 'Singles';
-        this.handicap = true;
-        this.gamesPerSet = 6;
-        this.sets = 1;
-        this.serving = "p1";
+    .controller('SetupCtrl', ['$scope', 'Handicaps', 'AppSettings', 'GameSettings',
+      function ( $scope, Handicaps, AppSettings, GameSettings) {
+        $scope.setup = {};
+        $scope.setup.gameTypes = AppSettings.gameTypes;
+        $scope.setup.games = AppSettings.games;
+        $scope.setup.setsPerMatch = AppSettings.sets;
+        $scope.setup.p1 = {};
+        $scope.setup.p1.serving = true;
+        $scope.setup.p2 = {};
+        $scope.setup.gameType = 'Singles';
+        $scope.setup.handicap = true;
+        $scope.setup.gamesPerSet = 6;
+        $scope.setup.sets = 1;
+        $scope.setup.serving = "p1";
+        $scope.setup.playHcp = true;
+        $scope.setup.calculateHcp = true;
+        $scope.setup.playDuece = false;
 
-        this.calculate = function (){
-          var hcdata = Handicaps.calculateHandicaps(this.p1.hc, this.p2.hc, this.gameType);
-          this.p1.hcSettings = angular.copy(hcdata.p1);
-          this.p2.hcSettings = angular.copy(hcdata.p2);
-          this.lookupError = hcdata.message;
-          if (! this.lookupError ) {
-            this.showHcp = true;
-            GameSettings.p1 = angular.copy(this.p1);
-            GameSettings.gameType = this.gameType;
-            GameSettings.p2 = angular.copy(this.p2);
+        $scope.calculate = function (){
+          var hcdata = Handicaps.calculateHandicaps($scope.setup.p1.hc, $scope.setup.p2.hc, $scope.setup.gameType);
+          $scope.setup.p1.hcSettings = angular.copy(hcdata.p1);
+          $scope.setup.p2.hcSettings = angular.copy(hcdata.p2);
+          $scope.setup.lookupError = hcdata.message;
+          if (! $scope.setup.lookupError ) {
+            $scope.setup.showHcp = true;
+            GameSettings.p1 = angular.copy($scope.setup.p1);
+            GameSettings.gameType = $scope.setup.gameType;
+            GameSettings.gamesPerSet = $scope.setup.GamesPerSet;
+            GameSettings.setsPerMatch = $scope.setup.setsPerMatch;
+            GameSettings.p2 = angular.copy($scope.setup.p2);
           }
         };
 
-        this.hcpChanged = function(){
-          this.showHcp = false;
+        $scope.hcpChanged = function(){
+          $scope.setup.showHcp = false;
         };
 
-        this.setServer = function() {
-          if (this.serving === "p1") {
-            this.p1.serving = true;
-            this.p2.serving = false;
+        $scope.setServer = function() {
+          if ($scope.setup.serving === "p1") {
+            $scope.setup.p1.serving = true;
+            $scope.setup.p2.serving = false;
           } else {
-            this.p1.serving = false;
-            this.p2.serving = true;
+            $scope.setup.p1.serving = false;
+            $scope.setup.p2.serving = true;
           }
 
         };

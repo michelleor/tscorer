@@ -12,6 +12,7 @@ angular.module('tscorerApp')
 		// AngularJS will instantiate a singleton by calling "new" on this function
 
 		var calculateHandicaps = function(h1, h2, gametype){
+      //todo ..  manage numbers not integers
 			var diff,
 				result = {}
        ;

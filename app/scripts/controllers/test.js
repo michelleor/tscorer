@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name tscorerApp.controller:GameCtrl
+ * @name tscorerApp.controller:TestCtrl
  * @description
- * # GameCtrl
+ * # TestCtrl
  * Controller of the tscorerApp
  */
 angular.module('tscorerApp')
-  .controller('GameCtrl', function ($scope) {
+  .controller('TestCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

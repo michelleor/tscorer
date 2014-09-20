@@ -1,85 +1,16 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-$brand-success: #84b43b;
+/* project variables and bootstrap overrides */
+@import "variables";
+@import "mixins";
+/*  end project specific */
+
 // bower:scss
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+@import "common";
+@import "loading";
+@import "setup";
+@import "game";
+@import "chases"
 
-/*  Sticky Footer */
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  margin-top: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
-/*  End Sticky Footer */
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Main page */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.zero-right-padding {
-  padding-right: 0;
-}
-
-.zero-left-padding {
-  padding-left: 0;
-}
-.no-padding {
-  padding: 0;
-}
-
-/*Animations*/
-.slide{
-  right:0;
-
-  &.ng-enter, &.ng-leave {
-    transition: 0.3s linear all;  
-    position:fixed;  
-  }
-
-  &.ng-enter{
-    z-index:inherit;
-    right:-100%;
-  }
-  &.ng-enter-active{
-    right:0;
-    position:relative;
-  }
-
-  &.ng-leave{
-    z-index:-100;
-    right:0;
-    left:0;
-  }
-  &.ng-leave-active{
-    position:fixed;
-    right:100%;
-    left:-100%;
-  }
-}
 

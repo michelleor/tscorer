@@ -1,89 +1,217 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   'karma-jasmine-expect',
-1 verbose cli   '--save-dev' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'update', '-g', 'bower' ]
 2 info using npm@1.4.26
 3 info using node@v0.10.31
-4 warn package.json grunt-contrib-htmlmin@0.1.3 No README data
-5 verbose readDependencies using package.json deps
-6 verbose cache add [ 'karma-jasmine-expect', null ]
-7 verbose cache add name=undefined spec="karma-jasmine-expect" args=["karma-jasmine-expect",null]
-8 verbose parsed url { protocol: null,
-8 verbose parsed url   slashes: null,
-8 verbose parsed url   auth: null,
-8 verbose parsed url   host: null,
-8 verbose parsed url   port: null,
-8 verbose parsed url   hostname: null,
-8 verbose parsed url   hash: null,
-8 verbose parsed url   search: null,
-8 verbose parsed url   query: null,
-8 verbose parsed url   pathname: 'karma-jasmine-expect',
-8 verbose parsed url   path: 'karma-jasmine-expect',
-8 verbose parsed url   href: 'karma-jasmine-expect' }
-9 silly lockFile 6927ceb9-karma-jasmine-expect karma-jasmine-expect
-10 verbose lock karma-jasmine-expect /Users/michelle/.npm/6927ceb9-karma-jasmine-expect.lock
-11 silly lockFile 6927ceb9-karma-jasmine-expect karma-jasmine-expect
-12 silly lockFile 6927ceb9-karma-jasmine-expect karma-jasmine-expect
-13 verbose addNamed [ 'karma-jasmine-expect', '' ]
-14 verbose addNamed [ null, '*' ]
-15 silly lockFile dd78ec7e-karma-jasmine-expect karma-jasmine-expect@
-16 verbose lock karma-jasmine-expect@ /Users/michelle/.npm/dd78ec7e-karma-jasmine-expect.lock
-17 silly addNameRange { name: 'karma-jasmine-expect', range: '*', hasData: false }
-18 verbose request where is /karma-jasmine-expect
-19 verbose request registry https://registry.npmjs.org/
-20 verbose request id 218c9c0ad32548a1
-21 verbose url raw /karma-jasmine-expect
-22 verbose url resolving [ 'https://registry.npmjs.org/', './karma-jasmine-expect' ]
-23 verbose url resolved https://registry.npmjs.org/karma-jasmine-expect
-24 verbose request where is https://registry.npmjs.org/karma-jasmine-expect
-25 info trying registry request attempt 1 at 16:33:41
-26 http GET https://registry.npmjs.org/karma-jasmine-expect
-27 http 404 https://registry.npmjs.org/karma-jasmine-expect
-28 verbose headers { date: 'Sat, 13 Sep 2014 06:33:41 GMT',
-28 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 verbose headers   'content-type': 'application/json',
-28 verbose headers   'cache-control': 'max-age=0',
-28 verbose headers   'content-length': '52',
-28 verbose headers   'accept-ranges': 'bytes',
-28 verbose headers   via: '1.1 varnish',
-28 verbose headers   age: '0',
-28 verbose headers   'x-served-by': 'cache-syd1622-SYD',
-28 verbose headers   'x-cache': 'MISS',
-28 verbose headers   'x-cache-hits': '0',
-28 verbose headers   'x-timer': 'S1410590021.385149,VS0,VE241',
-28 verbose headers   'keep-alive': 'timeout=10, max=50',
-28 verbose headers   connection: 'Keep-Alive' }
-29 silly registry.get cb [ 404,
-29 silly registry.get   { date: 'Sat, 13 Sep 2014 06:33:41 GMT',
-29 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-29 silly registry.get     'content-type': 'application/json',
-29 silly registry.get     'cache-control': 'max-age=0',
-29 silly registry.get     'content-length': '52',
-29 silly registry.get     'accept-ranges': 'bytes',
-29 silly registry.get     via: '1.1 varnish',
-29 silly registry.get     age: '0',
-29 silly registry.get     'x-served-by': 'cache-syd1622-SYD',
-29 silly registry.get     'x-cache': 'MISS',
-29 silly registry.get     'x-cache-hits': '0',
-29 silly registry.get     'x-timer': 'S1410590021.385149,VS0,VE241',
-29 silly registry.get     'keep-alive': 'timeout=10, max=50',
-29 silly registry.get     connection: 'Keep-Alive' } ]
-30 silly lockFile dd78ec7e-karma-jasmine-expect karma-jasmine-expect@
-31 silly lockFile dd78ec7e-karma-jasmine-expect karma-jasmine-expect@
-32 error 404 404 Not Found: karma-jasmine-expect
-32 error 404
-32 error 404 'karma-jasmine-expect' is not in the npm registry.
-32 error 404 You should bug the author to publish it
-32 error 404 It was specified as a dependency of 'tscorer'
-32 error 404
-32 error 404 Note that you can also install from a
-32 error 404 tarball, folder, or http url, or git url.
-33 error System Darwin 13.3.0
-34 error command "node" "/usr/local/bin/npm" "install" "karma-jasmine-expect" "--save-dev"
-35 error cwd /Users/michelle/GitHub/tscorer
-36 error node -v v0.10.31
-37 error npm -v 1.4.26
-38 error code E404
-39 verbose exit [ 1, true ]
+4 verbose request where is /bower
+5 verbose request registry https://registry.npmjs.org/
+6 verbose request id f5ca4fb0fecfb537
+7 verbose url raw /bower
+8 verbose url resolving [ 'https://registry.npmjs.org/', './bower' ]
+9 verbose url resolved https://registry.npmjs.org/bower
+10 verbose request where is https://registry.npmjs.org/bower
+11 info trying registry request attempt 1 at 15:33:52
+12 verbose etag "9W2H1ZI7O79KXQ5ZM9PMB2UTR"
+13 http GET https://registry.npmjs.org/bower
+14 http 200 https://registry.npmjs.org/bower
+15 silly registry.get cb [ 200,
+15 silly registry.get   { date: 'Sat, 20 Sep 2014 05:33:53 GMT',
+15 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+15 silly registry.get     etag: '"13UB3OHHGLH7Y7FOI51N33EY"',
+15 silly registry.get     'content-type': 'application/json',
+15 silly registry.get     'cache-control': 'max-age=60',
+15 silly registry.get     'content-length': '102839',
+15 silly registry.get     'accept-ranges': 'bytes',
+15 silly registry.get     via: '1.1 varnish',
+15 silly registry.get     age: '866',
+15 silly registry.get     'x-served-by': 'cache-syd1622-SYD',
+15 silly registry.get     'x-cache': 'HIT',
+15 silly registry.get     'x-cache-hits': '2',
+15 silly registry.get     'x-timer': 'S1411191233.027854,VS0,VE0',
+15 silly registry.get     vary: 'Accept',
+15 silly registry.get     'keep-alive': 'timeout=10, max=50',
+15 silly registry.get     connection: 'Keep-Alive' } ]
+16 info outdated updating [ [ '/usr/local/lib',
+16 info outdated     'bower',
+16 info outdated     '1.3.10',
+16 info outdated     '1.3.11',
+16 info outdated     '1.3.11',
+16 info outdated     'latest' ] ]
+17 verbose install where,what [ '/usr/local/lib', [ 'bower@1.3.11' ] ]
+18 verbose cache add [ 'bower@1.3.11', null ]
+19 verbose cache add name=undefined spec="bower@1.3.11" args=["bower@1.3.11",null]
+20 verbose parsed url { protocol: null,
+20 verbose parsed url   slashes: null,
+20 verbose parsed url   auth: null,
+20 verbose parsed url   host: null,
+20 verbose parsed url   port: null,
+20 verbose parsed url   hostname: null,
+20 verbose parsed url   hash: null,
+20 verbose parsed url   search: null,
+20 verbose parsed url   query: null,
+20 verbose parsed url   pathname: 'bower@1.3.11',
+20 verbose parsed url   path: 'bower@1.3.11',
+20 verbose parsed url   href: 'bower@1.3.11' }
+21 verbose cache add name="bower" spec="1.3.11" args=["bower","1.3.11"]
+22 verbose parsed url { protocol: null,
+22 verbose parsed url   slashes: null,
+22 verbose parsed url   auth: null,
+22 verbose parsed url   host: null,
+22 verbose parsed url   port: null,
+22 verbose parsed url   hostname: null,
+22 verbose parsed url   hash: null,
+22 verbose parsed url   search: null,
+22 verbose parsed url   query: null,
+22 verbose parsed url   pathname: '1.3.11',
+22 verbose parsed url   path: '1.3.11',
+22 verbose parsed url   href: '1.3.11' }
+23 verbose addNamed [ 'bower', '1.3.11' ]
+24 verbose addNamed [ '1.3.11', '1.3.11' ]
+25 silly lockFile 580239e4-bower-1-3-11 bower@1.3.11
+26 verbose lock bower@1.3.11 /Users/michelle/.npm/580239e4-bower-1-3-11.lock
+27 verbose request where is /bower
+28 verbose request registry https://registry.npmjs.org/
+29 verbose url raw /bower
+30 verbose url resolving [ 'https://registry.npmjs.org/', './bower' ]
+31 verbose url resolved https://registry.npmjs.org/bower
+32 verbose request where is https://registry.npmjs.org/bower
+33 info trying registry request attempt 1 at 15:34:06
+34 verbose etag "13UB3OHHGLH7Y7FOI51N33EY"
+35 http GET https://registry.npmjs.org/bower
+36 http 304 https://registry.npmjs.org/bower
+37 silly registry.get cb [ 304,
+37 silly registry.get   { date: 'Sat, 20 Sep 2014 05:34:06 GMT',
+37 silly registry.get     server: 'Apache',
+37 silly registry.get     via: '1.1 varnish',
+37 silly registry.get     'last-modified': 'Sat, 20 Sep 2014 05:19:27 GMT',
+37 silly registry.get     'cache-control': 'max-age=60',
+37 silly registry.get     etag: '"13UB3OHHGLH7Y7FOI51N33EY"',
+37 silly registry.get     'x-served-by': 'cache-syd1623-SYD',
+37 silly registry.get     'x-cache': 'HIT',
+37 silly registry.get     'x-cache-hits': '7',
+37 silly registry.get     'x-timer': 'S1411191246.162760,VS0,VE0',
+37 silly registry.get     vary: 'Accept',
+37 silly registry.get     'content-length': '0',
+37 silly registry.get     'keep-alive': 'timeout=10, max=50',
+37 silly registry.get     connection: 'Keep-Alive' } ]
+38 verbose etag https://registry.npmjs.org/bower from cache
+39 silly lockFile f2586932-npmjs-org-bower-bower-1-3-11-tgz https://registry.npmjs.org/bower/-/bower-1.3.11.tgz
+40 verbose lock https://registry.npmjs.org/bower/-/bower-1.3.11.tgz /Users/michelle/.npm/f2586932-npmjs-org-bower-bower-1-3-11-tgz.lock
+41 verbose addRemoteTarball [ 'https://registry.npmjs.org/bower/-/bower-1.3.11.tgz',
+41 verbose addRemoteTarball   '174fe11dafb69d28478d2896878e06f1ed47b789' ]
+42 info retry fetch attempt 1 at 15:34:06
+43 verbose fetch to= /var/folders/8k/21qchrzd3dq6xql3nfthwym80000gn/T/npm-2149-skPmhLyu/registry.npmjs.org/bower/-/bower-1.3.11.tgz
+44 http GET https://registry.npmjs.org/bower/-/bower-1.3.11.tgz
+45 http 200 https://registry.npmjs.org/bower/-/bower-1.3.11.tgz
+46 silly lockFile f2586932-npmjs-org-bower-bower-1-3-11-tgz https://registry.npmjs.org/bower/-/bower-1.3.11.tgz
+47 silly lockFile f2586932-npmjs-org-bower-bower-1-3-11-tgz https://registry.npmjs.org/bower/-/bower-1.3.11.tgz
+48 silly lockFile 580239e4-bower-1-3-11 bower@1.3.11
+49 silly lockFile 580239e4-bower-1-3-11 bower@1.3.11
+50 silly resolved [ { name: 'bower',
+50 silly resolved     version: '1.3.11',
+50 silly resolved     description: 'The browser package manager',
+50 silly resolved     author: { name: 'Twitter' },
+50 silly resolved     licenses: [ [Object] ],
+50 silly resolved     repository: { type: 'git', url: 'https://github.com/bower/bower' },
+50 silly resolved     main: 'lib',
+50 silly resolved     homepage: 'http://bower.io',
+50 silly resolved     engines: { node: '>=0.10.0' },
+50 silly resolved     dependencies:
+50 silly resolved      { abbrev: '~1.0.4',
+50 silly resolved        archy: '0.0.2',
+50 silly resolved        'bower-config': '~0.5.2',
+50 silly resolved        'bower-endpoint-parser': '~0.2.2',
+50 silly resolved        'bower-json': '~0.4.0',
+50 silly resolved        'bower-logger': '~0.2.2',
+50 silly resolved        'bower-registry-client': '~0.2.0',
+50 silly resolved        cardinal: '~0.4.0',
+50 silly resolved        chalk: '~0.5.0',
+50 silly resolved        chmodr: '~0.1.0',
+50 silly resolved        'decompress-zip': '0.0.8',
+50 silly resolved        fstream: '~1.0.2',
+50 silly resolved        'fstream-ignore': '~1.0.1',
+50 silly resolved        glob: '~4.0.2',
+50 silly resolved        'graceful-fs': '~3.0.1',
+50 silly resolved        handlebars: '~2.0.0',
+50 silly resolved        inquirer: '~0.7.1',
+50 silly resolved        insight: '~0.4.3',
+50 silly resolved        'is-root': '~1.0.0',
+50 silly resolved        junk: '~1.0.0',
+50 silly resolved        lockfile: '~1.0.0',
+50 silly resolved        'lru-cache': '~2.5.0',
+50 silly resolved        mkdirp: '~0.5.0',
+50 silly resolved        mout: '~0.10.0',
+50 silly resolved        nopt: '~3.0.0',
+50 silly resolved        opn: '~1.0.0',
+50 silly resolved        osenv: '~0.1.0',
+50 silly resolved        'p-throttler': '0.1.0',
+50 silly resolved        promptly: '~0.2.0',
+50 silly resolved        q: '~1.0.1',
+50 silly resolved        request: '~2.42.0',
+50 silly resolved        'request-progress': '~0.3.0',
+50 silly resolved        retry: '~0.6.0',
+50 silly resolved        rimraf: '~2.2.0',
+50 silly resolved        semver: '~2.3.0',
+50 silly resolved        'shell-quote': '~1.4.1',
+50 silly resolved        'stringify-object': '~1.0.0',
+50 silly resolved        'tar-fs': '~0.5.0',
+50 silly resolved        tmp: '0.0.23',
+50 silly resolved        'update-notifier': '~0.2.0',
+50 silly resolved        which: '~1.0.5' },
+50 silly resolved     devDependencies:
+50 silly resolved      { coveralls: '~2.11.0',
+50 silly resolved        'expect.js': '~0.3.1',
+50 silly resolved        grunt: '~0.4.4',
+50 silly resolved        'grunt-cli': '^0.1.13',
+50 silly resolved        'grunt-contrib-jshint': '~0.10.0',
+50 silly resolved        'grunt-contrib-watch': '~0.6.1',
+50 silly resolved        'grunt-exec': '~0.4.2',
+50 silly resolved        'grunt-simple-mocha': '~0.4.0',
+50 silly resolved        istanbul: '~0.3.2',
+50 silly resolved        'load-grunt-tasks': '~0.6.0',
+50 silly resolved        mocha: '~1.21.4',
+50 silly resolved        nock: '~0.46.0',
+50 silly resolved        'node-uuid': '~1.4.1',
+50 silly resolved        proxyquire: '~1.0.1' },
+50 silly resolved     scripts: { test: 'grunt test' },
+50 silly resolved     bin: { bower: 'bin/bower' },
+50 silly resolved     preferGlobal: true,
+50 silly resolved     gitHead: 'e97bf479fb804f57bb1437bf4ad14ce2cd2bf837',
+50 silly resolved     bugs: { url: 'https://github.com/bower/bower/issues' },
+50 silly resolved     _id: 'bower@1.3.11',
+50 silly resolved     _shasum: '174fe11dafb69d28478d2896878e06f1ed47b789',
+50 silly resolved     _from: 'bower@1.3.11',
+50 silly resolved     _npmVersion: '1.4.23',
+50 silly resolved     _npmUser: { name: 'sheerun', email: 'sheerun@sher.pl' },
+50 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+50 silly resolved     dist:
+50 silly resolved      { shasum: '174fe11dafb69d28478d2896878e06f1ed47b789',
+50 silly resolved        tarball: 'http://registry.npmjs.org/bower/-/bower-1.3.11.tgz' },
+50 silly resolved     directories: {},
+50 silly resolved     _resolved: 'https://registry.npmjs.org/bower/-/bower-1.3.11.tgz' } ]
+51 info install bower@1.3.11 into /usr/local/lib
+52 info installOne bower@1.3.11
+53 verbose lib/node_modules/bower unbuild
+54 info preuninstall bower@1.3.10
+55 info uninstall bower@1.3.10
+56 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild bower@1.3.10
+57 verbose /usr/local/bin,[object Object] binRoot
+58 verbose lib/node_modules/bower unbuild
+59 info preuninstall bower@1.3.10
+60 info uninstall bower@1.3.10
+61 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild bower@1.3.10
+62 verbose /usr/local/bin,[object Object] binRoot
+63 error error rolling back Error: EACCES, unlink '/usr/local/bin/bower'
+63 error error rolling back  bower@1.3.11 { [Error: EACCES, unlink '/usr/local/bin/bower'] errno: 3, code: 'EACCES', path: '/usr/local/bin/bower' }
+64 error Error: EACCES, unlink '/usr/local/bin/bower'
+64 error  { [Error: EACCES, unlink '/usr/local/bin/bower'] errno: 3, code: 'EACCES', path: '/usr/local/bin/bower' }
+65 error Please try running this command again as root/Administrator.
+66 error System Darwin 13.3.0
+67 error command "node" "/usr/local/bin/npm" "update" "-g" "bower"
+68 error cwd /Users/michelle/GitHub/tscorer
+69 error node -v v0.10.31
+70 error npm -v 1.4.26
+71 error path /usr/local/bin/bower
+72 error code EACCES
+73 error errno 3
+74 error stack Error: EACCES, unlink '/usr/local/bin/bower'
+75 verbose exit [ 3, true ]
