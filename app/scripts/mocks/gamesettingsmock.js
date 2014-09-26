@@ -38,6 +38,8 @@ angular.module('tscorerAppMocks')
       p2: p2,
       gameType: "Singles",
       gamesPerSet: 6,
-      setsPerMatch: 1
+      setsPerMatch: 1,
+      handicap: true,
+      playAdvantage: true
     };
   });

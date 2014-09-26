@@ -1,0 +1,60 @@
+   /* Google material styling */
+.card {
+  background-color: white;
+  padding: $padding;
+  @include boxshadow(1);
+  border-radius: $border-radius-base;
+  font-weight: $font-weight-light;  
+    font-size: larger;
+}
+
+
+/* FAB - floating action button */
+.fab {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.2s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  text-align: center;
+}
+
+.fab:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.fab img {
+  margin-left: -3px;
+  margin-top: 2px;
+  height: 19px;
+  width: 19px;
+}
+
+.fab.primary {
+  background-color: $brand-primary;
+}
+
+.fab.secondary {
+  background-color: $brand-secondary;
+}
+
+.fab:active {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  transition-delay: 0s;
+}
+
+.fab > core-icon {
+  margin: 16px;
+}
+
+.fab > core-icon::shadow path {
+  fill: #fff;
+}

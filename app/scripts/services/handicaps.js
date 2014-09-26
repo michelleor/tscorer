@@ -20,7 +20,7 @@ angular.module('tscorerApp')
 			result.message = "";
 
 			if (Number(h1) && Number(h2)){
-				diff = Math.abs(h1-h2);
+				diff = Math.round(Math.abs(h1-h2)); //compute difference first, then round to integer
 				if (diff > maxdiff[gametype]) {
 					result.message = "Maximum handicap difference for " + gametype + " is " + maxdiff[gametype];
 				} else {

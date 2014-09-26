@@ -16,6 +16,8 @@ angular.module('tscorerApp')
       p2: {},
       gameType: "",
       gamesPerSet: 0,
-      setsPerMatch: 0
+      setsPerMatch: 0,
+      handicap: true,
+      playAdvantage: true
     };
   });

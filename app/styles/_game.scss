@@ -1,3 +1,5 @@
+
+
 .game {
 
   div[class^="col"] {
@@ -12,44 +14,142 @@
     margin-bottom: 12px;
   }
 
+  .playerscore.row {
+    margin-bottom: 2px;
+    border: 1px solid rgba(197, 197, 197, 0.21);
+    border-radius: 3px;
+    background-color: rgba(213, 213, 213, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.12);
+  }
+
   h1, h2, h3, h4, h5 {
     margin-top: 0;
   }
-}
 
-.serveplaceholder {
-  width: 15px;
-  height: 15px;
-  border-radius: 10px;
-  padding: 2px;
-  display: inline-block;
-
-  &.serve {
-    background-color: $brand-primary;
+  .fab {
+    float: right;
+    margin-right: 10px;
+    margin-top: 4px;
   }
 
-  &.fault {
-    background-color: $brand-secondary;
+  .notice {
+    color: $brand-secondary-dark;
+    font-weight: 700;
+    margin-left: 23px;
+    height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-};
-
-.scoring {
-  padding: 3px;
-  .col-xs-2 {
-    text-align: center;
+  .actions.card {
+    @include boxshadow(5);
+    width: 224px;
+    float: right;
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 13px;
+    transform-origin: top right;
   }
-}
-.scoreHeadings {
-  padding: 5px 10px;
-  margin: 0px;
-}
-.playerscore {
-  color: #222;
-  padding: 5px 10px;
-  margin: 0px;
-}
 
-#logcard {
-    max-height: 145px;
+  .action {
+    display: inline-block;
+    width: 200px;
+    margin: 5px;
+  }
+
+  .serveplaceholder {
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    padding: 2px;
+    display: inline-block;
+
+    &.serve {
+      background-color: $brand-primary;
+    }
+
+    &.fault {
+      background-color: $brand-secondary;
+    }
+  };
+
+  .scoring {
+    padding: 3px;
+    .col-xs-2 {
+      text-align: center;
+    }
+  }
+
+  .scoreHeadings {
+    padding: 5px 10px;
+    margin: 0px;
+  }
+
+  .playerscore {
+    color: #222;
+    padding: 5px 10px;
+    margin: 0px;
+  }
+
+  .cardheader {
+    margin-left: -$padding;
+    margin-right: -$padding;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+    padding-left: $padding;
+    padding-right: $padding;
+    overflow: auto;
+    margin-bottom: 5px;
+
+    h3 {
+      float: left;
+    }
+
+    .cardicon {
+      float: right;
+      img {
+        height: 19px;
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .lastcard {
     overflow-y: scroll;
+
+    .cardcontents {
+      clear: both;
+      overflow-y: scroll;
+      height: calc(100% - 40px);
+
+    }
+
+    &.size1 {
+      height: calc(100% - 290px);
+    }
+
+    &.size2 {
+      height: calc(100% - 314px);
+    }
+
+    &.size3 {
+      height: calc(100% - 338px);
+    }
+  }
+
+  .card.fullsize {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 15px;
+    bottom: 15px;
+    height: inherit;
+    margin-bottom: 0;
+  }
+
+
+
+  .chasecard .cardcontents {
+    min-height: 48px;
+  }
+
 }

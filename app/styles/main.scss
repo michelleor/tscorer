@@ -7,7 +7,8 @@
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
-@import "common";
+@import "common"; //page elements
+@import "styling";  //google material style
 @import "loading";
 @import "setup";
 @import "game";

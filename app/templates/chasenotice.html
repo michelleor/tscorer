@@ -1,0 +1,15 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" ng-show="title">
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <h3 class="modal-title" ng-bind="title"></h3>
+      </div>
+      <div class="modal-body" ng-bind-html="gamedata.chasenotice">
+      </div>
+      <div class="modal-footer">
+        <a href-"" ng-click="changeEnds()">OK</a>
+      </div>
+    </div>
+  </div>
+</div>

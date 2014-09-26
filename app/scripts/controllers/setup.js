@@ -38,6 +38,7 @@ angular.module('tscorerApp')
             GameSettings.gamesPerSet = $scope.setup.GamesPerSet;
             GameSettings.setsPerMatch = $scope.setup.setsPerMatch;
             GameSettings.p2 = angular.copy($scope.setup.p2);
+            GameSettings.handicap = $scope.setup.handicap;
           }
         };
 

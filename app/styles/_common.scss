@@ -21,6 +21,7 @@
 /* Space out content a bit */
 body {
   padding-top: 0;
+  bottom: 0;
 }
 
 .content {
@@ -32,19 +33,15 @@ body {
 }
 
 .view-container {
-  min-height: 515px;
   padding: 15px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 50px;
 }
 
-/* Android material styling */
-.card {
-  background-color: white;
-  padding: 15px;
-  @include boxshadow(1);
-  border-radius: $border-radius-base;
-  font-weight: $font-weight-light;  
-    font-size: larger;
-}
+
 
 h1, h2, h3, h4 {
   font-weight: 200;
@@ -134,11 +131,11 @@ a:hover {
   }
 }
 
-/* aside */
+/* Angular-strap asside aside */
 .aside {
   display: block;
   padding-top: 20px;
-  width: 345px;
+  width: 280px;
 }
 
 .aside-backdrop {
