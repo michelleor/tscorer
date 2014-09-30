@@ -11,13 +11,46 @@ angular.module('tscorerApp')
   .service('GameSettings', function GameSettings() {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    return {
-      p1: {},
-      p2: {},
-      gameType: "",
-      gamesPerSet: 0,
-      setsPerMatch: 0,
+    var gamedefaults = {
+      p1: {
+        points: "l",
+        hcSettings: {
+          "description":"Love",
+          "startingScores":["l","l","l","l"],
+          "serves":2,
+          "key":"love"
+        },
+        serving: true
+      },
+      p2: {
+        points: "l",
+        hcSettings: {
+          "description":"Love",
+          "startingScores":["l","l","l","l"],
+          "serves":2,
+          "key":"love"
+        },
+        serving: false
+      },
+      gameType: "Singles",
+      gamesPerSet: "6",
+      setsPerMatch: 1,
       handicap: true,
-      playAdvantage: true
+      calculateHcp: true,
+      playDuece: false,
+      playAdvantage: true,
+      serving: "p1",
+      game: 0
     };
+
+    var newgame = function(){
+      return angular.copy(gamedefaults);
+    };
+
+    return {
+      currentgame: gamedefaults,
+      newgame: newgame
+    };
+
   });
+

@@ -7,19 +7,11 @@
   }
 
   &.view-container {
-    background-color: #f2f2f2;
+    /*background-color: #f2f2f2; */
   }
 
   .card {
     margin-bottom: 12px;
-  }
-
-  .playerscore.row {
-    margin-bottom: 2px;
-    border: 1px solid rgba(197, 197, 197, 0.21);
-    border-radius: 3px;
-    background-color: rgba(213, 213, 213, 0.2);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.12);
   }
 
   h1, h2, h3, h4, h5 {
@@ -35,12 +27,61 @@
   .notice {
     color: $brand-secondary-dark;
     font-weight: 700;
-    margin-left: 23px;
-    height: 25px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
+
+  .actionbar {
+    margin-bottom: -7px;
+    text-align: justify;
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+    }
+
+  }
+
+  .popover {
+      width: 130px;
+    .popover {
+      width: 190px;
+    }
+
+    .popover-content {
+      padding: 0;
+    }
+  }
+
+  .select-row {
+    padding: 10px ;
+  }
+
+  .select-row.selected {
+    background-color: #ddd;
+  }
+
+  .popover.right .select-row {
+    padding-left: 25px;
+  }
+
+  .popover.right .popover.left .select-row {
+    padding-left: 10px;
+  }
+
+  .anchor {
+    display: block;
+    width: 20px;
+    height: 1px;
+    margin-top: 10px;
+  }
+
+  .row-data {
+    margin-top: -15px;
+  }
+
   .actions.card {
     @include boxshadow(5);
     width: 224px;
@@ -57,11 +98,33 @@
     margin: 5px;
   }
 
+  .left-column-fluid {
+    overflow:auto;
+    float: left;
+    width: 100%;
+    &:after {
+      clear:both;
+    }
+  }
+  .fluid-col-contents {
+    margin-right: 110px;
+  }
+
+  .right-column-fixed {
+    float: left;
+    width: 110px;
+    margin-left: -110px;
+
+    div {
+      display: inline-block;
+    }
+  }
+
   .serveplaceholder {
     width: 15px;
     height: 15px;
     border-radius: 10px;
-    padding: 2px;
+    padding: 2px 4px 2px 0;
     display: inline-block;
 
     &.serve {
@@ -83,12 +146,41 @@
   .scoreHeadings {
     padding: 5px 10px;
     margin: 0px;
+    overflow: auto;
+    h3 {
+      margin-bottom: 0;
+    }
   }
 
   .playerscore {
     color: #222;
-    padding: 5px 10px;
-    margin: 0px;
+    padding: 5px;
+    margin: 5px;
+    overflow: auto;
+    border: 1px solid rgba(197, 197, 197, 0.21);
+    border-radius: 3px;
+    background-color: rgba(213, 213, 213, 0.2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.12);
+    .score {
+      font-size:26px;
+      font-weight: 700;
+    }
+
+    .points, .games, .sets {
+      background-color: white;
+      border-radius: 3px;
+      border: 1px solid #dddddd;
+    }
+  }
+
+  .points,{
+    width: 50px;
+    text-align: center;
+  }
+
+  .games, .sets {
+    width: 24px;
+    text-align: center;
   }
 
   .cardheader {
@@ -138,12 +230,10 @@
 
   .card.fullsize {
     position: absolute;
-    left: 15px;
-    right: 15px;
-    top: 15px;
-    bottom: 15px;
-    height: inherit;
-    margin-bottom: 0;
+    left: 14px;
+    right: 14px;
+    top: 14px;
+    bottom: 54px;
   }
 
 

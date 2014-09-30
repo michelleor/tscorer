@@ -6,6 +6,7 @@
   border-radius: $border-radius-base;
   font-weight: $font-weight-light;  
     font-size: larger;
+  overflow: auto;
 }
 
 
@@ -58,3 +59,33 @@
 .fab > core-icon::shadow path {
   fill: #fff;
 }
+
+/* Button */
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 0 20px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 2px;
+  text-align: center;
+  color: $brand-primary;
+  background-color: white;
+
+  &.raised {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+    &:active {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+      transition-delay: 0s;     
+    }
+  }
+
+  &.disabled {
+    background-color: #FAFAFA;
+    color: #AFAEAE;
+  }
+}
+ 

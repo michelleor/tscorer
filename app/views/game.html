@@ -1,47 +1,57 @@
 <div class="game view-container ng-cloak">
   <div class="card scoring">
-    <div class="row scoreHeadings">
-      <div class="col-xs-6"><h3>Score</h3></div>
-      <div class="col-xs-2"><h3>S</h3></div>
-      <div class="col-xs-2"><h3>G</h3></div>
-      <div class="col-xs-2"><h3>P</h3></div>   
-    </div>
-    <div class="playerscore row"  ng-click="awardPoint('p1')">
-      <div class="col-xs-6">
-        <div ng-class="{serveplaceholder: true, serve:gamedata.p1.serving, fault:gamedata.p1.faults==1}"></div>
-        {{gamedata.p1.name}}
+    <div class="scoreHeadings">
+      <div class="left-column-fluid">
+        <div class="fluid-col-contents"><h3>Score</h3></div>
+      </div> 
+      <div class="right-column-fixed">
+        <div class="sets"><h3>S</h3></div>
+        <div class="games"><h3>G</h3></div>
+        <div class="points"><h3>P</h3></div>  
       </div>
-      <div class="col-xs-2">{{gamedata.p1.sets}}</div>
-      <div class="col-xs-2">{{gamedata.p1.games}}</div>
-      <div class="col-xs-2">{{gamedata.p1.pointslabel}}</div>
     </div>
-    <div class="playerscore row"  ng-click="awardPoint('p2')">
-      <div class="col-xs-6">
-        <div ng-class="{serveplaceholder: true, serve:gamedata.p2.serving, fault:gamedata.p2.faults==1}"></div>  
-        {{gamedata.p2.name}}
+    <div class="playerscore"  ng-click="awardPoint('p1')">
+      <div class="left-column-fluid">
+        <div class="fluid-col-contents">
+          <div class="serveplaceholder " ng-class="{serve:gamedata.p1.serving, fault:gamedata.p1.faults==1}"></div>
+          {{gamedata.p1.name}}
+        </div>
       </div>
-      <div class="col-xs-2">{{gamedata.p2.sets}}</div>
-      <div class="col-xs-2">{{gamedata.p2.games}}</div>
-      <div class="col-xs-2">{{gamedata.p2.pointslabel}}</div>
+      <div class="right-column-fixed">
+        <div class="score sets">{{gamedata.p1.sets}}</div>
+        <div class="score games">{{gamedata.p1.games}}</div>
+        <div class="score points">{{gamedata.p1.pointslabel}}</div>
+      </div>
     </div>
-    <div class="fab secondary text" ng-click="gamedisplay.showScorecard=!gamedisplay.showScorecard">
-      <img ng-hide="gamedisplay.showScorecard" src="images/add_white.svg"/>
-      <img ng-show="gamedisplay.showScorecard" src="images/remove_white.svg"/>
+    <div class="playerscore"  ng-click="awardPoint('p2')">
+      <div class="left-column-fluid">
+        <div class="fluid-col-contents">
+          <div class="serveplaceholder" ng-class="{serve:gamedata.p2.serving, fault:gamedata.p2.faults==1}"></div>  
+          {{gamedata.p2.name}}
+        </div>
+      </div>
+      <div class="right-column-fixed">
+        <div class="score sets">{{gamedata.p2.sets}}</div>
+        <div class="score games">{{gamedata.p2.games}}</div>
+        <div class="score points">{{gamedata.p2.pointslabel}}</div>
+      </div>
     </div>
+  </div>
+  <div class="actionbar">
+    <div class="button raised" ng-click="recoredFault()">Fault</div>
+    <div type="button" class="button" button-popover data-placement="right" 
+      data-animation="am-fade-and-scale" targetfn="setChase(chase)" 
+      data-values="appsettings.chases.service" 
+      ng-class="{disabled: gamedata.playingchase, raised: !gamedata.playingchase}">Ch<span class="poptarget">a</span>se</div>
+    <div href="" class="button" button-popover data-placement="left" 
+      data-animation="am-fade-and-scale" targetfn="setChase(chase)" 
+      data-values="appsettings.chases.hazard"
+      ng-class="{disabled: gamedata.playingchase, raised: !gamedata.playingchase}">Hazard chase</div>
+  </div>
+  <div class="card">
     <div class="notice">
       {{gamedata.notice}}
     </div>
-  </div>
-  <div class="actions card am-fade-and-scale" ng-show="gamedisplay.showScorecard">
-    <a href="" class="action primary" ng-click="awardPoint(gamedata.server)">Point to server</a>
-    <a href="" class="action primary" ng-click="awardPoint(gamedata.receiver)">Point to receiver</a>
-    <a href="" class="action primary" ng-click="recoredFault()">Fault</a>
-    <a href="" class="action primary" ng-click="showChases(false)" 
-      ng-hide="gamedata.playingchase">Chase</a>
-    <a href="" class="action primary" ng-click="showChases(true)" 
-      ng-hide="gamedata.playingchase">Hazard chase</a>
-    <a href="" class="action primary" ng-click="showChases()" 
-      ng-show="false">Select chase result</a>
   </div>
   <div class="card chasecard" id="chasecard">
     <h3>Chases</h3>
@@ -54,16 +64,17 @@
       <div ng-hide="gamedata.chases.length>0">No Chases</div>
     </div>
   </div>
-  <div class="card lastcard {{gamedisplay.logclasses}}" ng-class="{ fullsize:lastcard.expanded }"  
-    last-card chaselength="gamedata.chases.length" sizeclass="gamedisplay.logclasses">
+  <!-- <div class="card lastcard {{gamedisplay.logclasses}}" ng-class="{ fullsize:lastcard.expanded }" --> 
+  <div class="card fullsize" ng-show="gamedisplay.showHistory" >
     <div class="cardheader">
       <h3>History</h3>
       <div class="cardicon">
-        <img ng-hide="lastcard.expanded" ng-click="lastcard.expanded=true" src="images/expand-less.svg"/>
-        <img ng-show="lastcard.expanded" ng-click="lastcard.expanded=false" src="images/expand-more.svg"/>
+        <img ng-click="gamedisplay.showHistory=false" src="images/close.svg"/>
+        <!-- <img ng-hide="lastcard.expanded" ng-click="lastcard.expanded=true" src="images/expand-less.svg"/>
+        <img ng-show="lastcard.expanded" ng-click="lastcard.expanded=false" src="images/expand-more.svg"/> -->
       </div>
     </div>
-    <div class="cardcontents" id="test" scroll-top trigger="gamedata.logs.length">
+    <div class="cardcontents" id="test" scroll-top trigger="gamedisplay.showHistory">
        <div id="logcard">
         <div class="logentry" ng-repeat="log in gamedata.logs">
           {{log.text}}

@@ -10,8 +10,33 @@
 angular.module('tscorerApp')
   .service('AppSettings', function AppSettings() {
     var gameTypes = ["Singles", "Doubles"];
-    var gamesPerSet = [5,6,7,8,9];
-    var sets = [1,3,5];
+    var gamesPerSet = [
+      {
+        label: "5",
+        value: "5"
+      },
+      {
+        label: "6",
+        value: "6"
+      },
+      {
+        label: "7",
+        value: "7"
+      },
+      {
+        label: "8",
+        value: "8"
+      },
+      {
+        label: "9",
+        value: "9"
+      },
+      {
+        label: "No limit",
+        value: "0"
+      }
+    ];
+    var sets = [0,1,3,5];
 
     var scoreNames = {
       "l": "Love",
@@ -44,74 +69,188 @@ angular.module('tscorerApp')
       return scoreOrder;
     };
 
-    var chases = [
-      {key: "hbhalf", name: "Better than half a yard", type: "space", size: "half" , hazard: true},
-      {key: "hhalf", name: "Half a yard", type: "line", size: "half" , hazard: true},
-      {key: "hbtone", name: "Better than one yard", type: "space", size: "half" , hazard: true},
-      {key: "hone", name: "One yard", type: "line", size: "full", hazard: true},
-      {key: "hwtone", name: "Worse than one yard", type: "space", size: "half", hazard: true},
-      {key: "honetwo", name: "One and two", type: "line", size: "half", hazard: true},
-      {key: "hbttwo", name: "Better than two yards", type: "space", size: "half", hazard: true},
-      {key: "htwo", name: "Two yards", type: "line", size: "full", hazard: true},
-      {key: "hwttwo", name: "Worse than two yards", type: "space", size: "half", hazard: true},
-      {key: "hhalfwttwo", name: "Half a yard worse than two", type: "line", size: "half", hazard: true},
-      {key: "hbtsecond", name: "Better than second gallery", type: "space", size: "full", hazard: true},
-      {key: "hsecond", name: "Second gallery", type: "line", size: "full", extraclasses: "gallery", hazard: true},
-      {key: "hwtsecond", name: "Worse than second gallery", type: "space", size: "full", hazard: true},
-      {key: "hywtsecond", name: "A yard worse than second gallery", type: "line", size: "half", hazard: true},
-      {key: "hbtdoor", name: "Better than the door", type: "space", size: "full", hazard: true},
-      {key: "hdoor", name: "The door", type: "line", size: "full", hazard: true},
-      {key: "hwtdoor", name: "Worse than the door", type: "space", size: "full", hazard: true},
-      {key: "hywtdoor", name: "A yard worse than the door", type: "line", size: "half", hazard: true},
-      {key: "hbtfirst", name: "Better than first gallery", type: "space", size: "full", hazard: true},
-      {key: "hfirst", name: "First gallery", type: "line", size: "full", extraclasses: "gallery", hazard: true},
-      {key: "hline", name: "The Line", type: "space", size: "full", hazard: true},
-      {key: "line", name: "The Line", type: "space", size: "full"},
-      {key: "first", name: "First gallery", type: "line", size: "full", extraclasses: "gallery"},
-      {key: "btfirst", name: "Better than first gallery", type: "space", size: "full"},
-      {key: "ywtdoor", name: "A yard worse than the door", type: "line", size: "half"},
-      {key: "wtdoor", name: "Worse than the door", type: "space", size: "full"},
-      {key: "door", name: "The door", type: "line", size: "full", extraclasses: "gallery"},
-      {key: "btdoor", name: "Better than the door", type: "space", size: "full"},
-      {key: "ywtsecond", name: "A yard worse than second gallery", type: "line", size: "half"},
-      {key: "wtsecond", name: "Worse than second gallery", type: "space", size: "full"},
-      {key: "second", name: "Second gallery", type: "line", size: "full", extraclasses: "gallery"},
-      {key: "btsecond", name: "Better than second gallery", type: "space", size: "full"},
-      {key: "ybtsecond", name: "A yard better than second gallery", type: "line", size: "half"},
-      {key: "mtywlast", name: "More than a yard worse than last gallery", type: "space", size: "full"},
-      {key: "ywtlast", name: "A yard worse than last gallery", type: "line", size: "full"},
-      {key: "nywtlast", name: "Nearly a yard worse than last gallery", type: "space", size: "half"},
-      {key: "hywtlast", name: "Half a yard worse than last gallery", type: "line", size: "half"},
-      {key: "wtlast", name: "Worse than last gallery", type: "space", size: "half"},
-      {key: "last", name: "Last gallery", type: "line", size: "full", extraclasses: "gallery"},
-      {key: "btlast", name: "Better than last gallery", type: "space", size: "half"},
-      {key: "halfwtsix", name: "Half a yard worse than six", type: "line", size: "half"},
-      {key: "wtsix", name: "Worse than six yards", type: "space", size: "half"},
-      {key: "six", name: "Six yards", type: "line", size: "half"},
-      {key: "btsix", name: "Better than six yards", type: "space", size: "half"},
-      {key: "fivesixe", name: "Five and six", type: "line", size: "half"},
-      {key: "wtfive", name: "Worse than five yards", type: "space", size: "half"},
-      {key: "five", name: "Five yards", type: "line", size: "full"},
-      {key: "btfive", name: "Better than five yards", type: "space", size: "half"},
-      {key: "fourfive", name: "Four and five", type: "line", size: "half"},
-      {key: "wtfour", name: "Worse than four yards", type: "space", size: "half"},
-      {key: "four", name: "Four yards", type: "line", size: "full"},
-      {key: "btfour", name: "Better than four", type: "space", size: "half"},
-      {key: "threefour", name: "Three and four", type: "line", size: "half"},
-      {key: "wtthree", name: "Worse than three yards", type: "space", size: "half"},
-      {key: "three", name: "Three yards", type: "line", size: "full"},
-      {key: "btthree", name: "Better than three yards", type: "space", size: "half"},
-      {key: "twothree", name: "Two and Three", type: "line", size: "half"},
-      {key: "wttwo", name: "Worse than two yards", type: "space", size: "half"},
-      {key: "two", name: "Two yards", type: "line", size: "full"},
-      {key: "bttwo", name: "Better than two yards", type: "space", size: "half"},
-      {key: "onetwo", name: "One and two", type: "line", size: "half"},
-      {key: "wtone", name: "Worse than one yard", type: "space", size: "half"},
-      {key: "one", name: "One yard", type: "line", size: "full"},
-      {key: "btone", name: "Better than one yard", type: "space", size: "half" },
-      {key: "half", name: "Half a yard", type: "line", size: "half" },
-      {key: "bhalf", name: "Better than half a yard", type: "space", size: "half" }
+    var hazardChases = [
+      {
+        key: "hone",
+        label: "1",
+        choices: [
+          {key: "hbhalf", name: "Better than half a yard", hazard: true},
+          {key: "hhalf", name: "Half a yard", hazard: true},
+          {key: "hbtone", name: "Better than one yard", hazard: true},
+          {key: "hone", name: "One yard", hazard: true},
+          {key: "hwtone", name: "Worse than one yard", hazard: true},
+          {key: "honetwo", name: "One and two", hazard: true},
+        ]
+      },
+      {
+        key: "htwo",
+        label: "2",
+        choices: [
+          {key: "honetwo", name: "One and two", hazard: true},
+          {key: "hbttwo", name: "Better than two yards", hazard: true},
+          {key: "htwo", name: "Two yards", hazard: true},
+          {key: "hwttwo", name: "Worse than two yards", hazard: true},
+          {key: "hhalfwttwo", name: "Half a yard worse than two", hazard: true}
+        ]
+      },
+      {
+        key: "hsecond",
+        label: "Second Gallery",
+        choices: [
+          {key: "hhalfwttwo", name: "Half a yard worse than two", hazard: true},
+          {key: "hbtsecond", name: "Better than second gallery", hazard: true},
+          {key: "hsecond", name: "Second gallery", hazard: true},
+          {key: "hwtsecond", name: "Worse than second gallery", hazard: true},
+          {key: "hywtsecond", name: "A yard worse than second gallery", hazard: true}
+        ]
+      },
+      {
+        key: "hdoor",
+        label: "The door",
+        choices: [
+          {key: "hywtsecond", name: "A yard worse than second gallery", hazard: true},
+          {key: "hbtdoor", name: "Better than the door", hazard: true},
+          {key: "hdoor", name: "The door", hazard: true},
+          {key: "hwtdoor", name: "Worse than the door", hazard: true},
+          {key: "hywtdoor", name: "A yard worse than the door", hazard: true}
+        ]
+      },
+      {
+        key: "hfirst",
+        label: "First gallery",
+        choices: [
+          {key: "hywtdoor", name: "A yard worse than the door", hazard: true},
+          {key: "hbtfirst", name: "Better than first gallery", hazard: true},
+          {key: "hfirst", name: "First gallery", hazard: true},
+          {key: "hline", name: "Chase the Line", hazard: true}
+        ]
+      }
+
     ];
+
+    var serviceChases = [
+      {
+        key: "first",
+        label: "First gallery",
+        choices: [
+          {key: "line", name: "The Line"},
+          {key: "first", name: "First gallery"},
+          {key: "btfirst", name: "Better than first gallery"},
+          {key: "ywtdoor", name: "A yard worse than the door"}
+        ]
+      },
+      {
+        key: "door",
+        label: "The door",
+        choices: [
+          {key: "ywtdoor", name: "A yard worse than the door"},
+          {key: "wtdoor", name: "Worse than the door"},
+          {key: "door", name: "The door"},
+          {key: "btdoor", name: "Better than the door"},
+          {key: "ywtsecond", name: "A yard worse than second gallery"}
+        ]
+      },
+      {
+        key: "second",
+        label: "Second galery",
+        choices: [
+          {key: "ywtsecond", name: "A yard worse than second gallery"},
+          {key: "wtsecond", name: "Worse than second gallery"},
+          {key: "second", name: "Second gallery"},
+          {key: "btsecond", name: "Better than second gallery"},
+          {key: "ybtsecond", name: "A yard better than second gallery"},
+          {key: "mtywlast", name: "More than a yard worse than last gallery"},
+          {key: "ywtlast", name: "A yard worse than last gallery"}
+        ]
+      },
+      {
+        key: "last",
+        label: "Last gallery",
+        choices: [
+          {key: "ybtsecond", name: "A yard better than second gallery"},
+          {key: "mtywlast", name: "More than a yard worse than last gallery"},
+          {key: "ywtlast", name: "A yard worse than last gallery"},
+          {key: "nywtlast", name: "Nearly a yard worse than last gallery"},
+          {key: "hywtlast", name: "Half a yard worse than last gallery"},
+          {key: "wtlast", name: "Worse than last gallery"},
+          {key: "last", name: "Last gallery"},
+          {key: "btlast", name: "Better than last gallery"},
+          {key: "halfwtsix", name: "Half a yard worse than six"}
+        ]
+      },
+      {
+        key: "six",
+        label: "6",
+        choices: [
+          {key: "halfwtsix", name: "Half a yard worse than six"},
+          {key: "wtsix", name: "Worse than six yards"},
+          {key: "six", name: "Six yards"},
+          {key: "btsix", name: "Better than six yards"},
+          {key: "fivesix", name: "Five and six"}
+        ]
+      },
+      {
+        key: "five",
+        label: "5",
+        choices: [
+          {key: "fivesix", name: "Five and six"},
+          {key: "wtfive", name: "Worse than five yards"},
+          {key: "five", name: "Five yards"},
+          {key: "btfive", name: "Better than five yards"},
+          {key: "fourfive", name: "Four and five"}
+        ]
+      },
+      {
+        key: "four",
+        label: "4",
+        choices: [
+          {key: "fourfive", name: "Four and five"},
+          {key: "wtfour", name: "Worse than four yards"},
+          {key: "four", name: "Four yards"},
+          {key: "btfour", name: "Better than four"},
+          {key: "threefour", name: "Three and four"}
+        ]
+      },
+      {
+        key: "three",
+        label: "3",
+        choices: [
+          {key: "threefour", name: "Three and four"},
+          {key: "wtthree", name: "Worse than three yards"},
+          {key: "three", name: "Three yards"},
+          {key: "btthree", name: "Better than three yards"},
+          {key: "twothree", name: "Two and Three"}
+        ]
+      },
+      {
+        key: "two",
+        label: "2",
+        choices: [
+          {key: "twothree", name: "Two and Three"},
+          {key: "wttwo", name: "Worse than two yards"},
+          {key: "two", name: "Two yards"},
+          {key: "bttwo", name: "Better than two yards"},
+          {key: "onetwo", name: "One and two"}
+        ]
+      },
+      {
+        key: "one",
+        label: "1",
+        choices: [
+          {subkey: "onetwo", name: "One and two"},
+          {subkey: "wtone", name: "Worse than one yard"},
+          {subkey: "one", name: "One yard"},
+          {subkey: "btone", name: "Better than one yard"},
+          {subkey: "half", name: "Half a yard"},
+          {subkey: "bhalf", name: "Better than half a yard"}
+        ]
+      }
+    ];
+
+    var chases = {
+      hazard: hazardChases,
+      service: serviceChases
+    };
 
     return {
       getScoreOrder: getScoreOrder,

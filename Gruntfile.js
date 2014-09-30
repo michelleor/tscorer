@@ -9,6 +9,7 @@
 
 module.exports = function (grunt) {
 
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
@@ -342,7 +343,8 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'fonts/*'
+            'fonts/*',
+            'templates/*.html'
           ]
         }, {
           expand: true,
@@ -374,9 +376,27 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'imagemin',
-        'svgmin'
+        'imagemin'
+        //'svgmin'
       ]
+    },
+
+    preprocess : {
+      options: {
+        inline: true,
+        context : {
+          DEBUG: false
+        }
+      },
+      html : {
+        src : [
+          '<%= yeoman.dist %>/index.html',
+          '<%= yeoman.dist %>/views/*.html'
+        ]
+      },
+      js : {
+        src: '.tmp/concat/scripts/*.js'
+      }
     },
 
     // Test settings
@@ -437,6 +457,8 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
+    'preprocess:js',  // Remove DEBUG code from production builds
+    'preprocess:html',  // Remove DEBUG code from production builds
     'ngAnnotate',
     'copy:dist',
     'cdnify',

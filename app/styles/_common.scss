@@ -1,10 +1,12 @@
-
+div.no-padding {
+  padding: 0;
+}
 /* header */
 .navbar-default  {
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
   border: none;
   .container {
-    background-color: #8bc34a;
+    background-color: $brand-primary;
   }
   .navbar-brand {
     color: white;
@@ -14,7 +16,10 @@
       color: white;
     }
   }
+}
 
+.navbar-layer {
+  z-index: $zindex-navbar-fixed;
 }
 
 
@@ -26,19 +31,25 @@ body {
 
 .content {
   margin-top: 50px;
+}
 
-  &.container {
-    padding: 0;
-  }
+.main-container {
+  padding: 0;
+}
+.main-container .content {
+  position: absolute;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0;
 }
 
 .view-container {
   padding: 15px;
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 50px;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -54,13 +65,45 @@ h1, h2, h3, h4 {
 .right {
   display: inline-block;
   position: absolute;
-  right: 15px;
+  right: $padding;
+}
+
+.right-absolute {
+  display: inline-block;
+  position: absolute;
+  right: 0;
 }
 
 .bottom {
   display: inline-block;
   position: absolute;
-  bottom: 15px;
+  bottom: $padding;
+}
+
+.top {
+  display: inline-block;
+  position: absolute;
+  top: $padding; 
+}
+
+.top-absolute {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.menucard {
+  z-index: $zindex-modal-background;
+  transform-origin: top right;
+}
+
+.iconbutton {
+  min-width: 32px;
+  text-align: center;
+}
+
+.iconbutton-container {
+
 }
 .btn {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -74,43 +117,43 @@ a:hover {
   text-decoration: none;
 }
 
-.actions {
-  padding-top: 15px;
-}
-
 .action {
   margin: 0 9px;
   font-weight: 700;
 }
 
+.menucard .action {
+  display: block;
+  padding: 10px;
+}
+
 /*Animations*/
-.slide{
-  right:0;
-
-  &.ng-enter, &.ng-leave {
-    transition: 0.3s linear all;  
-    position:fixed;  
-  }
-
-  &.ng-enter{
-    z-index:inherit;
-    right:-100%;
-  }
-  &.ng-enter-active{
-    right:0;
-    position:relative;
-  }
-
-  &.ng-leave{
-    z-index:-100;
-    right:0;
-    left:0;
-  }
-  &.ng-leave-active{
-    position:fixed;
-    right:100%;
-    left:-100%;
-  }
+.slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0,0,0); //forces hardware acceleration on mobile browsers
+}
+.slide.ng-enter,
+.slide.ng-leave {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.slide.ng-enter {
+    left: 100%;
+}
+.slide.ng-enter-active {
+    left: 0;
+}
+.slide.ng-leave {
+    left: 0;
+}
+.slide.ng-leave-active {
+    left: -100%;
 }
 
 /* Angular-strap animation for modal*/

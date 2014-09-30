@@ -5,14 +5,17 @@ angular.module('tscorerApp', [
   'ngSanitize',
   'ngRoute',
   'ngAnimate',
-  'mgcrea.ngStrap',
-  'tscorerAppMocks' //allow game page to be loaded with dummy data.  TODO - remove once page is complete
+  // @if DEBUG
+  'tscorerAppMocks',  // Won't be included in production builds
+  // @endif
+  'mgcrea.ngStrap'
 
 ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/main.html',
+        controller: 'StartCtrl'
       })
       .when('/Setup', {
         templateUrl: 'views/setup.html',
