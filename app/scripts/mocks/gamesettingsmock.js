@@ -10,13 +10,15 @@
 angular.module('tscorerAppMocks')
   .service('GameSettingsMock', function GameSettings() {
     // AngularJS will instantiate a singleton by calling "new" on this function
+    var Settings = {};
+
     var gamedefaults = {
       p1: {
         serving:true,
         name:"Michelle",
         hc:68,
         hcSettings:{
-          "description":"Receive 15",
+          "description":"Receive half 30",
           "startingScores":["r1", "r2", "r1", "r2"],
           "serves":2,
           "key":"rechalf30"
@@ -31,7 +33,8 @@ angular.module('tscorerAppMocks')
           "startingScores":["o1","o1","o1","o1"],
           "serves":2,
           "key":"owe15"
-        }
+        },
+        games: 0
       },
       gameType: "Singles",
       gamesPerSet: "6",
@@ -44,13 +47,27 @@ angular.module('tscorerAppMocks')
       game: 0
     };
 
-    var newgame = function(){
-      return angular.copy(gamedefaults);
+     //object to hold game settings as it progresses
+    Settings.currentgame = angular.copy(gamedefaults);
+
+    Settings.getdisplaySettings = function getdisplaySettings(){
+      return {
+        gameType: Settings.currentgame.gameType,
+        gamesPerSet: Settings.currentgame.gamesPerSet,
+        setsPerMatch: Settings.currentgame.setsPerMatch,
+        handicap: Settings.currentgame.handicap,
+        p1hcp: Settings.currentgame.p1.hcSettings.description,
+        p2hcp: Settings.currentgame.p2.hcSettings.description
+      };
     };
 
-    return {
-      currentgame: gamedefaults,
-      newgame: newgame
+    //method to clear and reset game
+    Settings.newgame = function newgame(){
+      Settings.currentgame = angular.copy(gamedefaults);
     };
+
+
+    return Settings;
+
 
   });

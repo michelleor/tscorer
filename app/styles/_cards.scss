@@ -1,0 +1,10 @@
+   /* Google material styling */
+.card {
+  background-color: white;
+  padding: $padding;
+  @include boxshadow(1);
+  border-radius: $border-radius-base;
+  font-weight: $font-weight-light;  
+    font-size: larger;
+  overflow: auto;
+}
