@@ -4,14 +4,18 @@
 /*  end project specific */
 
 // bower:scss
-@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+//@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+@import "scaffolding";
+@import "navbar";
 @import "common"; //page elements
-@import "styling";  //google material style
+@import "cards"; 
 @import "loading";
 @import "setup";
 @import "game";
-@import "chases"
+@import "chases";
+@import "dialog";
+@import "buttons";
 
 

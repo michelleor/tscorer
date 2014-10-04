@@ -1,17 +1,19 @@
 'use strict';
 
 /**
- * @ngdoc service
+ * @ngdoc factory
  * @name tscorerApp.Handicaps
  * @description Stores handicap settings and calculates handicaps
  * # Handicaps
  * Service in the tscorerApp.
  */
 angular.module('tscorerApp')
-	.service('Handicaps', [ function Handicaps() {
+	.factory('Handicaps', [ function Handicaps() {
 		// AngularJS will instantiate a singleton by calling "new" on this function
 
-		var calculateHandicaps = function(h1, h2, gametype){
+    var HcpService = {};
+
+		HcpService.calculateHandicaps = function(h1, h2, gametype){
       //todo ..  manage numbers not integers
 			var diff,
 				result = {}
@@ -481,7 +483,5 @@ angular.module('tscorerApp')
       }
     };
 
-		return {
-			calculateHandicaps: calculateHandicaps
-		};
+		return HcpService;
   }]);

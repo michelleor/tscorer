@@ -1,0 +1,40 @@
+//
+// Navbars:  Derived from Bootstrap, reduced to only what is needed
+// --------------------------------------------------
+
+
+// Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
+.navbar {
+  position: relative;
+  min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
+  margin-bottom: 1em;
+  border: 1px solid transparent;
+
+  // Prevent floats from breaking the navbar
+  @include clearfix();
+
+  .container {
+    min-height: $navbar-height;
+  }
+}
+
+.navbar-header {
+  padding: 10px;
+}
+
+// Fix the to the top of the screen
+.navbar-fixed-top{
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex-navbar-fixed;
+  top: 0;
+  border-width: 0 0 1px;
+}
+
+
+

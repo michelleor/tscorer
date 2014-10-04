@@ -5,7 +5,7 @@ $font-family-sans-serif:  'Roboto', sans-serif !default;
 
 $brand-primary: #8bc34a;
 $brand-primary-light: #dcedc8;
-$brand-primary-dark: #689f38;
+$brand-primary-dark: #33691e;
 
 $brand-secondary: #ffc107;
 $brand-secondary-light: #ffe082;
@@ -15,6 +15,16 @@ $border-radius-base:        2px !default;
 $border-radius-large:       2px !default;
 $border-radius-small:       2px !default;
 
-$font-weight-light: 200;
+$font-weight-light:         200;
+$font-size-base:            14px !default;
 
 $padding: 15px;
+
+$zindex-modal-background:  1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-navbar-fixed:      1060 !default;
+
+$link-color:               $brand-primary;
+$link-hover-color:         $brand-primary-dark;
+
+$navbar-height:            50px;

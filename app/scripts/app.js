@@ -1,14 +1,13 @@
 'use strict';
 angular.module('tscorerApp', [
   'ngCookies',
-  'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngAnimate',
   // @if DEBUG
   'tscorerAppMocks',  // Won't be included in production builds
   // @endif
-  'mgcrea.ngStrap'
+  'ngAnimate',
+  'ngDialog'
 
 ])
   .config(function ($routeProvider) {

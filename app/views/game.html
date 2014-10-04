@@ -1,7 +1,8 @@
 <div class="game view-container ng-cloak">
+
   <div class="card scoring">
     <div class="scoreHeadings">
-      <div class="left-column-fluid">
+     <div class="left-column-fluid">
         <div class="fluid-col-contents"><h3>Score</h3></div>
       </div> 
       <div class="right-column-fixed">
@@ -13,44 +14,42 @@
     <div class="playerscore"  ng-click="awardPoint('p1')">
       <div class="left-column-fluid">
         <div class="fluid-col-contents">
-          <div class="serveplaceholder " ng-class="{serve:gamedata.p1.serving, fault:gamedata.p1.faults==1}"></div>
-          {{gamedata.p1.name}}
+          <div class="serveplaceholder " 
+            ng-class="{serve:gamestate.server==='p1', fault:gamedisplay.p1.showFault}"></div>
+          {{players.p1}}
         </div>
       </div>
       <div class="right-column-fixed">
-        <div class="score sets">{{gamedata.p1.sets}}</div>
-        <div class="score games">{{gamedata.p1.games}}</div>
-        <div class="score points">{{gamedata.p1.pointslabel}}</div>
+        <div class="score sets">{{scores.p1.sets}}</div>
+        <div class="score games">{{scores.p1.games}}</div>
+        <div class="score points">{{scores.p1.pointname}}</div>
       </div>
     </div>
     <div class="playerscore"  ng-click="awardPoint('p2')">
       <div class="left-column-fluid">
         <div class="fluid-col-contents">
-          <div class="serveplaceholder" ng-class="{serve:gamedata.p2.serving, fault:gamedata.p2.faults==1}"></div>  
-          {{gamedata.p2.name}}
+          <div class="serveplaceholder" 
+          ng-class="{serve:gamestate.server==='p2', fault:gamedisplay.p2.showFault}"></div>  
+          {{players.p2}}
         </div>
       </div>
       <div class="right-column-fixed">
-        <div class="score sets">{{gamedata.p2.sets}}</div>
-        <div class="score games">{{gamedata.p2.games}}</div>
-        <div class="score points">{{gamedata.p2.pointslabel}}</div>
+        <div class="score sets">{{scores.p2.sets}}</div>
+        <div class="score games">{{scores.p2.games}}</div>
+        <div class="score points">{{scores.p2.pointname}}</div>
       </div>
     </div>
   </div>
-  <div class="actionbar">
-    <div class="button raised" ng-click="recoredFault()">Fault</div>
-    <div type="button" class="button" button-popover data-placement="right" 
-      data-animation="am-fade-and-scale" targetfn="setChase(chase)" 
-      data-values="appsettings.chases.service" 
-      ng-class="{disabled: gamedata.playingchase, raised: !gamedata.playingchase}">Ch<span class="poptarget">a</span>se</div>
-    <div href="" class="button" button-popover data-placement="left" 
-      data-animation="am-fade-and-scale" targetfn="setChase(chase)" 
-      data-values="appsettings.chases.hazard"
-      ng-class="{disabled: gamedata.playingchase, raised: !gamedata.playingchase}">Hazard chase</div>
+  <div class="actionbar" ng-hide="gamedisplay.gameHasEnded">
+    <button type="button" class="button" ng-click="recordFault()">Fault</button>
+    <button type="button" class="button" ng-disabled="gamestate.playingchase"
+      ng-click="showChases(false)">Chase</button> 
+    <button type="button" class="button" ng-disabled="gamestate.playingchase"
+      ng-click="showChases(true)">Hazard Chase</button> 
   </div>
   <div class="card">
     <div class="notice">
-      {{gamedata.notice}}
+      {{gamedata.notice.text}}
     </div>
   </div>
   <div class="card chasecard" id="chasecard">
@@ -58,28 +57,82 @@
     <div class="cardcontents" >
       <div ng-show="gamedata.chases.length>0">
         <div class="chase" ng-repeat="chase in gamedata.chases" >
-          <span ng-show="chase.hazard">Hazard chase </span>{{chase.name}}
+          {{chase.description}}
         </div>
       </div>
       <div ng-hide="gamedata.chases.length>0">No Chases</div>
     </div>
   </div>
-  <!-- <div class="card lastcard {{gamedisplay.logclasses}}" ng-class="{ fullsize:lastcard.expanded }" --> 
   <div class="card fullsize" ng-show="gamedisplay.showHistory" >
     <div class="cardheader">
       <h3>History</h3>
-      <div class="cardicon">
+      <button type="button" class="cardicon">
         <img ng-click="gamedisplay.showHistory=false" src="images/close.svg"/>
-        <!-- <img ng-hide="lastcard.expanded" ng-click="lastcard.expanded=true" src="images/expand-less.svg"/>
-        <img ng-show="lastcard.expanded" ng-click="lastcard.expanded=false" src="images/expand-more.svg"/> -->
-      </div>
+      </button>
     </div>
     <div class="cardcontents" id="test" scroll-top trigger="gamedisplay.showHistory">
        <div id="logcard">
-        <div class="logentry" ng-repeat="log in gamedata.logs">
-          {{log.text}}
-        </div>
+        <ul>
+          <li class="logentry" ng-repeat="log in gamedata.logs">
+            {{log.text}} <span class="text-smaller" ng-show="log.scoretext">({{log.scoretext}})</span>
+          </li> 
+        <ul>
       </div>
     </div>
   </div>
+    <div class="card fullsize" ng-show="gamedisplay.showSettings" >
+    <div class="cardheader">
+      <h3>Settings</h3>
+      <button type="button" class="cardicon">
+        <img ng-click="gamedisplay.showSettings=false" src="images/close.svg"/>
+      </button>
+    </div>
+    <div class="cardcontents">
+      <div><span class="settingname">Game Type:</span>{{displaysettings.gameType}}</div>
+      <div><span class="settingname">Games per set:</span>{{displaysettings.gamesPerSet}}</div>
+      <div><span class="settingname">Sets - best of:</span>{{displaysettings.setsPerMatch}}</div>
+      <div><span class="settingname">Played of Handicap:</span>{{displaysettings.handicap}}</div>
+      <div><span class="settingname">Handicap:</span>{{players.p1}}: {{displaysettings.p1hcp}}</div>
+      <div><span class="settingname"></span>{{players.p2}}: {{displaysettings.p2hcp}}</div>
+    </div>
+  </div>
+  <div class="chase-list ng-cloak ng-hide" ng-show="gamedisplay.showChases">
+    <div class="list-title">
+      <h4>Select Chase</h4>
+      <button type="button">
+        <img ng-click="gamedisplay.showChases=false" src="images/close-white.svg"/>
+      </button>
+    </div>
+    <ul>
+      <li ng-repeat="chase in gamedisplay.chases">
+        <div class="chase-item level1" ng-hide="chase.showchoices" ng-click="showChaseChoices(chase)">
+          <span class="list-icon">{{chase.shortlabel}}</span>
+          <span class="list-label" ng-hide="chase.showchoices">{{chase.label}}</span>
+        </div>
+        <ul >
+          <li ng-repeat="choice in chase.choices" ng-show="chase.showchoices" class="chase-choice">
+            <div class="chase-item level2"  ng-class="{primary: choice.primary}" ng-click="setChase(choice)">
+              <span class="list-icon">{{choice.shortlabel}}</span>
+              <span class="list-label">{{choice.name}}</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<script type="text/ng-template" id="endsdialog.html">
+  <div class="ngdialog-container" role="dialog">
+    <div class="ngdialog-title">
+      <h3>Change Ends</h3>
+    </div>
+    <div class="ngdialog-body">
+      <div class=""><b>{{chasedialog.score}}</b></div>
+      <div ng-repeat="chase in gamedata.chases">{{chase.description}}</div>
+    </div>
+    <div class="ngdialog-footer">
+      <button type="button" class="ngdialog-button" href-"" ng-click="closeThisDialog()">OK</button>
+    </div>
+  </div>
+</script>
