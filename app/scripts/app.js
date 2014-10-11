@@ -4,7 +4,7 @@ angular.module('tscorerApp', [
   'ngSanitize',
   'ngRoute',
   // @if DEBUG
-  'tscorerAppMocks',  // Won't be included in production builds
+  //'tscorerAppMocks',  // Won't be included in production builds
   // @endif
   'ngAnimate',
   'ngDialog'

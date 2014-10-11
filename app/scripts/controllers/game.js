@@ -10,7 +10,7 @@
 angular.module('tscorerApp')
   .controller('GameCtrl',
     // @if DEBUG
-    ['$scope', '$timeout', 'AppSettings', 'GameSettingsMock', 'History', 'Scoring', 'ngDialog',
+    //['$scope', '$timeout', 'AppSettings', 'GameSettingsMock', 'History', 'Scoring', 'ngDialog',
     // @endif
     function ( $scope, $timeout,  AppSettings, GameSettings, History, Scoring, ngDialog) {
       $scope.gamedata = {};
@@ -257,6 +257,6 @@ angular.module('tscorerApp')
       History.logNewGame({scores: $scope.scores, players: $scope.players});
     }
     // @if DEBUG
-    ]
+    //]
     // @endif
     );

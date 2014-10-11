@@ -10,7 +10,11 @@
  * Service in the tscorerApp.
  */
 angular.module('tscorerApp')
-  .factory('Scoring', ['GameSettingsMock', 'AppSettings', function Scoring(GameSettings, AppSettings) {
+  .factory('Scoring',
+    // @if DEBUG 
+    //['GameSettingsMock', 'AppSettings', 
+    // @endif
+    function Scoring(GameSettings, AppSettings) {
     
     var ScoreService = {};
 
@@ -281,4 +285,8 @@ angular.module('tscorerApp')
 
     return ScoreService;
 
-  }]);
+  }
+  // @if DEBUG 
+  //]
+  // @endif
+  );
