@@ -13,7 +13,7 @@ angular.module('tscorerApp')
     var Settings = {};
 
     Settings.gameTypes = ["Singles", "Doubles"];
-    Settings.gamesPerSet = [
+    Settings.games = [
       {
         shortlabel: "5",
         value: "5"
@@ -35,11 +35,11 @@ angular.module('tscorerApp')
         value: "9"
       },
       {
-        shortlabel: "No limit",
+        shortlabel: "∞",
         value: "0"
       }
     ];
-    Settings.sets = [0,1,3,5];
+    Settings.sets = [1,3,5];
 
     var scoreNames = {
       "l": "Love",

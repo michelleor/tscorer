@@ -27,4 +27,8 @@ angular.module('tscorerApp')
       $scope.showmenu = false;
     });
 
+    $scope.undo = function undo(){
+      $rootScope.$broadcast('undo');
+    };
+
   }]);

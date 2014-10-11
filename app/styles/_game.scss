@@ -26,22 +26,7 @@
 
   .notice {
     color: $brand-secondary-dark;
-    font-weight: 700;
-  }
-
-  .actionbar {
-    margin-bottom: -7px;
-    text-align: justify;
-    width: 290px;
-    margin-left: auto;
-    margin-right: auto;
-
-    &:after {
-      content: '';
-      display: inline-block;
-      width: 100%;
-    }
-
+    font-weight: 500;
   }
 
   .popover {

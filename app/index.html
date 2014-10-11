@@ -10,11 +10,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:900,400,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
     <!-- build:css(app/..) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -34,12 +35,18 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Real Tennis Scorer</a>
         </div>
-        <div class="iconbutton right-absolute top navbar-layer" ng-click="toggleMenu()"> 
-          <img  src="images/more-vert-white.svg"/> 
+        <!-- Icon bar needs to be here to break out of contained view which requires overflow:hidden-->
+        <div class="iconbutton-container right-absolute top" ng-show="path=='/Game'">
+          <div class="iconbutton" ng-click="toggleMenu()"> 
+            <img  src="images/more-vert-white.svg"/> 
+          </div>        
+          <div class="iconbutton " ng-click="undo()"> 
+            <img  src="images/undo-white.svg"/> 
+          </div>
         </div>
         <div class="card menucard right-absolute ng-cloak ng-hide" ng-show="showmenu" ng-click="showmenu=false">
-          <a href="" class="action" ng-click="showHistory()" ng-show="path=='/Game'">Game History</a>
-          <a href="" class="action" ng-click="showSettings()" ng-show="path=='/Game'">Settings</a>
+          <a href="" class="action" ng-click="showHistory()" >Game History</a>
+          <a href="" class="action" ng-click="showSettings()">Settings</a>
         </div>
       </div>
     </div>

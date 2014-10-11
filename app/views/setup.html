@@ -1,102 +1,118 @@
-<div class="view-container">
-    <ng-form name="setupForm" class="form-horizontal">
-      <div class="form-group">
-        <label for="selectGameType" class="col-xs-3 control-label zero-right-padding">Game Type</label>
-        <div class="col-xs-9">
-          <select class="form-control"  name="selectGameType" id="selectGameType"
-            ng-model="gamesettings.gameType" ng-options="o as o for o in setup.gameTypes">
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="gamesPerSet" class="col-xs-3 control-label zero-right-padding">Game / Set</label>
-        <div class="col-xs-3">
-          <select class="form-control" name="gamesPerSet" id="gamesPerSet" ng-change="changeGames()"
-            ng-model="gamesettings.gamesPerSet"  ng-options="o.value as o.label for o in setup.games">
-          </select>
-        </div>
-        <label for="setsPerMatch" class="col-xs-3 control-label">Sets</label>
-        <div class="col-xs-3">
-          <select class="form-control" name="setsPerMatch" id="setsPerMatch" ng-change="changeSets()"
-            ng-model="gamesettings.setsPerMatch" ng-options="o as o for o in setup.sets">
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-xs-3 control-label zero-right-padding">Handicap</label>
-        <div class="col-xs-9">
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary disabled" 
-              onclick="toggleHandicap(true)">On</button>
-            <button type="button" class="btn btn-default disabled" 
-              onclick="toggleHandicap(false)" >Off</button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group" ng-show="gamesettings.handicap">
-        <label class="col-xs-3 control-label zero-right-padding">Calculate</label>
-        <div class="col-xs-9">
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary disabled">On</button>
-            <button type="button" class="btn btn-default disabled">Off</button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group" ng-hide="gamesettings.handicap">
-        <label class="col-xs-3 control-label zero-right-padding">Advantage</label>
-        <div class="col-xs-9">
-          <div class="btn-group">
-            <button type="button" class="btn btn-default">On</button>
-            <button type="button" class="btn btn-primary">Off</button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-xs-8 control-label zero-right-padding">Players</label>
-        <label class="col-xs-2 control-label zero-right-padding">Hcp</label>
-        <label class="col-xs-2 control-label zero-right-padding">Serve</label>
-        <div class="col-xs-8">
-          <input class="form-control" ng-model="gamesettings.p1.name" required/>
-        </div>
-        <div class="col-xs-2 no-padding">
-          <input class="form-control" ng-model="gamesettings.p1.hc" 
-            ng-change="hcpChanged()" type="number" required/>
-        </div>
-         <div class="col-xs-2">
-          <input type="radio" name="server" class="form-control"
-            ng-model = "gamesettings.serving" value="p1" ng-change="setServer()"/>
-        </div>   
-        <div class="col-xs-8">
-          <input class="form-control" ng-model="gamesettings.p2.name" required/>
-        </div>
-        <div class="col-xs-2 no-padding">
-          <input class="form-control" ng-model="gamesettings.p2.hc" 
-            ng-change="hcpChanged()" type="number" required/>
-        </div>  
-        <div class="col-xs-2">
-          <input type="radio" name="server" class="form-control"
-            ng-model="gamesettings.serving" value="p2" ng-change="setServer()"/>
-        </div>   
-      </div>
-      <div >
-        <button class="btn btn-primary center-block" ng-click="calculate()"
-        ng-disabled="!setupForm.$valid" ng-hide="displaySettings.showHcp">Calculate</button>
-      </div>
-    </ng-form>
-    <div class="row" ng-show="displaySettings.showHcp">
-      <div class="col-xs-12">
-        {{gamesettings.p1.name}}: {{gamesettings.p1.hcSettings.description}}
-      </div>
-      <div class="col-xs-12">
-        {{gamesettings.p2.name}}: {{gamesettings.p2.hcSettings.description}}
-      </div>
-      <div>
-        <a class="btn btn-primary col-xs-4 col-xs-offset-4" ng-href="#/Game" ng-disabled="!setupForm.$valid">Start Game</a>
+<div class="view-container setup">
+  <ng-form name="setupForm">
+    <label class="switch-contol-label">Game type</label>
+    <div class="switch">
+      <input ng-repeat-start="gtype in setup.gameTypes" ng-model="gamesettings.gameType" type="radio" 
+            class="switch-input" name="gametype" value="{{gtype}}" id="{{gtype}}">
+      <label ng-repeat-end for="{{gtype}}" class="switch-label switch-pos{{$index}}" >{{gtype}}</label>
+      <span class="switch-selection"></span>
+    </div>
+    <div>
+      <label for="gamesPerSet" class="switch-contol-label">Game / Set</label>
+      <div class="switch ">
+        <input ng-repeat-start="game in setup.games" ng-model="gamesettings.gamesPerSet" type="radio" 
+              class="switch-input" name="gamesperset" value="{{game.value}}" id="{{'gps'+game.value}}">
+        <label ng-repeat-end for="{{'gps'+game.value}}" class="switch-label small switch-pos{{$index}}">{{game.shortlabel}}</label>
+        <span class="switch-selection small"></span>
       </div>
     </div>
-    <div class="col-xs-12" ng-show="displaySettings.lookupError">
-      <div class="alert alert-warning" role="alert" >
-        {{setup.lookupError}}
+    <div ng-hide="gamesettings.gamesPerSet=='0'">
+      <label for="setsPerMatch" class="switch-contol-label">Sets</label>
+      <div class="switch ">
+        <input ng-repeat-start="set in setup.sets" ng-model="gamesettings.setsPerMatch" type="radio" 
+              class="switch-input" name="setspermatch" value="{{set}}" id="{{'set'+set}}">
+        <label ng-repeat-end for="{{'set'+set}}" class="switch-label medium switch-pos{{$index}}">{{set}}</label>
+        <span class="switch-selection medium"></span>
       </div>
     </div>
+    <div>
+      <label for="hcapOn" class="switch-contol-label">Handicap</label>
+      <div class="switch ">
+        <input ng-model="gamesettings.handicap" type="radio" 
+              class="switch-input" name="hcapOn" ng-value="true" id="hcp1" checked>
+        <label ng-repeat-end for="hcp1" class="switch-label switch-pos0">On</label>
+         <input ng-model="gamesettings.handicap" type="radio" 
+              class="switch-input" name="hcapOn" ng-value="false" id="hcp2" checked>
+        <label ng-repeat-end for="hcp2" class="switch-label switch-pos1">Off</label>
+        <span class="switch-selection"></span>
+      </div>
+    </div>
+    <div ng-hide="true">
+      <label for="calcOn" class="switch-contol-label">Calculate</label>
+      <div class="switch ">
+        <input ng-model="gamesettings.calculateHcp" type="radio" 
+              class="switch-input" name="calcOn" ng-value="true" id="calc1" checked>
+        <label ng-repeat-end for="calc1" class="switch-label switch-pos0">On</label>
+         <input ng-model="gamesettings.calculateHcp" type="radio" 
+              class="switch-input" name="calcOn" ng-value="false" id="aclc2" checked>
+        <label ng-repeat-end for="calc2" class="switch-label switch-pos1">Off</label>
+        <span class="switch-selection"></span>
+      </div>
+    </div>
+    <div ng-show="!gamesettings.handicap">
+      <label for="adOn" class="switch-contol-label">Advantage</label>
+      <div class="switch ">
+        <input ng-model="gamesettings.playDuece" type="radio" 
+              class="switch-input" name="adOn" ng-value="true" id="ad1" checked>
+        <label ng-repeat-end for="ad1" class="switch-label switch-pos0">On</label>
+         <input ng-model="gamesettings.playDuece" type="radio" 
+              class="switch-input" name="adOn" ng-value="false" id="ad2" checked>
+        <label ng-repeat-end for="ad2" class="switch-label switch-pos1">Off</label>
+        <span class="switch-selection"></span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label class="col-70">Players</label>
+      <label class="col-20">Hcp</label>
+      <label class="col-10">Serve</label>
+    </div>
+    <div class="form-row">
+      <div class="col-70">
+        <input class="form-input" ng-model="gamesettings.p1.name" required/>
+      </div>
+      <div class="col-20">
+        <input class="form-input" ng-model="gamesettings.p1.hc" 
+          ng-change="hcpChanged()" type="number" required/>
+      </div>
+       <div class="col-10">
+        <input type="radio" name="server" class="form-input"
+          ng-model = "gamesettings.serving" value="p1" ng-change="setServer()"/>
+      </div>   
+    </div>
+    <div class="form-row">
+      <div class="col-70">
+        <input class="form-input" ng-model="gamesettings.p2.name" required/>
+      </div>
+      <div class="col-20">
+        <input class="form-input" ng-model="gamesettings.p2.hc" 
+          ng-change="hcpChanged()" type="number" required/>
+      </div>  
+      <div class="col-10">
+        <input type="radio" name="server" class="form-input"
+          ng-model="gamesettings.serving" value="p2" ng-change="setServer()"/>
+      </div>
+    </div>
+  </ng-form>
+  <div class="actionbar" ng-hide="displaySettings.showHcp">
+    <button class="button" type="button" ng-click="calculate()"
+    ng-disabled="!setupForm.$valid" >Calculate</button>
+  </div>
+  <div class="handicap-description" ng-show="displaySettings.showHcp">
+    <div>
+      {{gamesettings.p1.name}}: {{gamesettings.p1.hcSettings.description}}
+    </div>
+    <div>
+      {{gamesettings.p2.name}}: {{gamesettings.p2.hcSettings.description}}
+    </div>
+    <div class="actionbar"> 
+      <button type="button" class="button" ng-click="playGame()" 
+      ng-disabled="!setupForm.$valid">Start Game</a>
+    </div>
+  </div>
+  <div ng-show="displaySettings.lookupError">
+    <div class="alert alert-warning" role="alert" >
+      {{setup.lookupError}}
+    </div>
+  </div>
 </div>
